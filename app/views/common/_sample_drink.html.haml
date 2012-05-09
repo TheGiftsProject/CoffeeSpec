@@ -1,0 +1,4 @@
+.drink_container.span6.sample
+  != render :partial => "common/drink_infograph", :locals => {:drink => drink}
+  %h2.name= drink.name
+  %p.description= drink.description

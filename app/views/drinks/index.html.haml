@@ -3,3 +3,6 @@
     != render :partial => "common/drink", :locals => {:drink => drinks.first}
     - if drinks.second.present?
       != render :partial => "common/drink", :locals => {:drink => drinks.second}
+%a.btn.btn-large.add{:href => new_drink_path}
+  %i.icon-plus-sign
+  Add Drink
