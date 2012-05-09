@@ -1,4 +1,7 @@
 .drink_container.span6
   != render :partial => "common/drink_infograph", :locals => {:drink => drink}
-  %h2.name= drink.name
+  %h2.name
+    = drink.name
+    %a{:href => drink_path(drink)}
+      %i.icon-pencil.edit
   %p.description= drink.description
