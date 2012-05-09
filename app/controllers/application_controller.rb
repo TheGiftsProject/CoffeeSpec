@@ -2,6 +2,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   def debug
-    @drink = Drink.create(:name => "yon")
+    @drink = Drink.first
   end
 end
