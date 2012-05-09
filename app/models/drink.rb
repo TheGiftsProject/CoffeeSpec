@@ -9,4 +9,8 @@ class Drink < ActiveRecord::Base
   belongs_to :variation
 
   attr_accessible :name, :note
+
+  def description
+    "a coffee"
+  end
 end

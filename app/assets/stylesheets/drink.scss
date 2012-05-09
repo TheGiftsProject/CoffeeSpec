@@ -1,0 +1,85 @@
+.drink_container{
+  .drink{
+    float: left;
+    margin-right: 15px
+  }
+}
+
+.drink{
+  $glass-color: #777;
+  $glass-padding: 10px;
+  width: 50px;
+  height: 100px;
+  background: $glass-color;
+  padding: $glass-padding;
+  position: relative;
+
+  .milk{
+    background: white;
+    width: 100%;
+    height: 10%;
+    float:left;
+    border-bottom: $glass-padding solid $glass-color;
+
+    &.no-milk{
+      height: 0;
+      border-bottom: 0;
+    }
+
+    &.touch {
+      height: 5%;
+      border-bottom-width: $glass-padding / 2;
+    }
+
+    &.little{
+      height: 10%;
+    }
+
+    &.third {
+      height: 25%;
+    }
+    &.half {
+      height: 40%;
+    }
+
+    &.skim{
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    &.soy{
+      background: #fafad2;
+    }
+
+  }
+
+  .essence{
+    background: #a52a2a;
+    height: 100%;
+    width: 100%;
+  }
+
+  .sugar{
+    position: absolute;
+    bottom: $glass-padding + 5px;
+    left: $glass-padding + 5px;
+    width: 100%;
+
+    .piece{
+      width: 10px;
+      height: 10px;
+      background: white;
+      float: left;
+      margin-right: 10px;
+
+      &.half{
+        border-color: white transparent transparent white;
+        border-style: solid;
+        border-width: 5px;
+        background: transparent;
+        width: 0;
+        height: 0;
+      }
+    }
+
+  }
+}
