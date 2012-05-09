@@ -1,6 +1,8 @@
 .drink
-  .milk
-  .essence
-  .sugar
-    .piece
-    .piece.half
+  .milk{:class => "#{drink.milk_type} #{drink.milk_amount}"}
+  .essence{:class => "#{drink.strength} #{drink.drink_type}"}
+  .sugar{:class => "#{drink.sugar_type}"}
+    - drink.sugar_amount.to_i.times do
+      .piece
+    - if drink.sugar_amount.to_f % 1 > 0
+      .piece.half

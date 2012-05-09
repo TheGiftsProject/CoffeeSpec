@@ -21,7 +21,7 @@
     float:left;
     border-bottom: $glass-padding solid $glass-color;
 
-    &.no-milk{
+    &.none{
       height: 0;
       border-bottom: 0;
     }
@@ -41,8 +41,12 @@
     &.half {
       height: 40%;
     }
+    &.max {
+      height: 50%;
+    }
 
-    &.skim{
+
+    &.low_fat{
       background: rgba(255, 255, 255, 0.8);
     }
 
@@ -53,9 +57,24 @@
   }
 
   .essence{
-    background: #a52a2a;
     height: 100%;
     width: 100%;
+
+    &.coffee{
+      background: #ad8850;
+
+      &.light{
+        background: #dcb062;
+      }
+
+      &.strong{
+        background: #381f18;
+      }
+    }
+
+    &.tea{
+      background: #ce492f;
+    }
   }
 
   .sugar{
