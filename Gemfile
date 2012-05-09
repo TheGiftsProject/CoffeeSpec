@@ -8,7 +8,8 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 gem 'haml', '3.1.4'
 gem 'thin'
-
+gem 'omniauth'
+gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 
 # Gems used only for assets and not required
 # in production environments by default.
