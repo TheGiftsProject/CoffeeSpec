@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(:version => 20120509142132) do
   end
 
   create_table "sugar_amounts", :force => true do |t|
-    t.string   "value"
+    t.float   "value"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
