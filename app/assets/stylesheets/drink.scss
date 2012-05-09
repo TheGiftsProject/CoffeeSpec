@@ -1,18 +1,45 @@
+$drink-height: 120px;
+$drink-width: 0.6 * $drink-height;
+
 .drink_container{
+  overflow: hidden;
+  padding: 10px;
+  box-sizing: border-box;
   .drink{
     float: left;
-    margin-right: 15px
+    margin-right: 50px
+  }
+  h2{
+    font-size: 4em;
+    line-height: 1.2em;
+    margin-top: 0.3em;
+  }
+  p{
+    max-height: 30px;
   }
 }
 
 .drink{
   $glass-color: #777;
   $glass-padding: 10px;
-  width: 50px;
-  height: 100px;
+  width: $drink-width;
+  height: $drink-height;
   background: $glass-color;
   padding: $glass-padding;
   position: relative;
+  box-sizing: border-box;
+
+  &::after{
+    border: $glass-padding solid $glass-color;
+    background: white;
+    content: "";
+    width: 25px;
+    height: 30px;
+    position: absolute;
+    right: -25px;
+    top: 40px;
+    z-index: -1;
+  }
 
   .milk{
     background: white;

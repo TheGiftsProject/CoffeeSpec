@@ -1,3 +1,5 @@
-%h1 sample drink
-
-!= render :partial => "common/drink", :locals => {:drink => @drink}
+- Drink.all.each_slice(2) do |drinks|
+  .row-fluid
+    != render :partial => "common/drink", :locals => {:drink => drinks.first}
+    - if drinks.second.present?
+      != render :partial => "common/drink", :locals => {:drink => drinks.second}
