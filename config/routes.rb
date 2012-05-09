@@ -6,4 +6,6 @@ CoffeeSpec::Application.routes.draw do
 
   resources :drinks
 
+  root :to => "drinks#index"
+
 end
