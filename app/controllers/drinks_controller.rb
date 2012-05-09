@@ -1,6 +1,6 @@
 class DrinksController < ApplicationController
 
-  before_filter :must_be_logged_in
+  before_filter :must_be_logged_in, :except => [:view]
   before_filter :load_drink, :only => [:update, :show, :destroy]
 
   def new
@@ -43,6 +43,16 @@ class DrinksController < ApplicationController
     @drink.update_attribute(:user, nil)
     redirect_to drinks_path, :notice => "Drink deleted"
   end
+
+  def view
+    @user = User.find_by_token(params[:token])
+    if @user.nil?
+      redirect_to root_path, :error => "Wrong url given"
+    end
+    @drinks = @user.drinks
+    render :action => :index
+  end
+
 
   private
 

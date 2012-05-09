@@ -1,6 +1,10 @@
 $drink-height: 120px;
 $drink-width: 0.6 * $drink-height;
 
+.drinks{
+  clear: both;
+}
+
 .drink_container{
   overflow: hidden;
   padding: 10px;

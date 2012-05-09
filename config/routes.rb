@@ -6,6 +6,8 @@ CoffeeSpec::Application.routes.draw do
 
   resource :sessions
 
+  match "/view/:token" => "drinks#view", :as => :share
+
   root :to => "application#landing"
 
 end

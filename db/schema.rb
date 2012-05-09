@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509195842) do
+ActiveRecord::Schema.define(:version => 20120509213954) do
 
   create_table "drink_types", :force => true do |t|
     t.string   "value"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(:version => 20120509195842) do
     t.string   "nickname"
     t.string   "company_name"
     t.string   "image"
+    t.string   "token"
   end
 
   create_table "variations", :force => true do |t|

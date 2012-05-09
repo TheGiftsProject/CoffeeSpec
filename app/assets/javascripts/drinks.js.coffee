@@ -2,3 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
+$(document).ready( =>
+  $(".share").popover (
+      placement: "bottom"
+      content: $('.share-tooltip').html()
+      delay: 1000
+  )
+)

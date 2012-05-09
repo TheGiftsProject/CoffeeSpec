@@ -1,8 +1,21 @@
-- @drinks.each_slice(2) do |drinks|
-  .row-fluid
-    != render :partial => "common/drink", :locals => {:drink => drinks.first}
-    - if drinks.second.present?
-      != render :partial => "common/drink", :locals => {:drink => drinks.second}
-%a.btn.btn-large.add{:href => new_drink_path}
-  %i.icon-plus-sign
-  Add Drink
+.btn-toolbar.pull-right
+  .btn-group
+    - if owner_signed_in?
+      %a.btn.btn-medium.add{:href => new_drink_path}
+        %i.icon-plus-sign
+        Add drink
+    %a.btn.btn-medium.print{:href => "javascript:window.print()"}
+      %i.icon-print
+      Print spec
+    %a.btn.btn-medium.share{:href => "#"}
+      %i.icon-share
+      Share URL
+    .share-tooltip{:style => "display:none"}
+      %h1 Share URL
+      %input{:type => :text, :value => token_share_url()}
+.drinks
+  - @drinks.each_slice(2) do |drinks|
+    .row-fluid
+      != render :partial => "common/drink", :locals => {:drink => drinks.first}
+      - if drinks.second.present?
+        != render :partial => "common/drink", :locals => {:drink => drinks.second}

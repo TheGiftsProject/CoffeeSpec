@@ -1,12 +1,19 @@
+- content_for :title do
+  =user.company_name
+  __
+  Coffee.spec
+
 .page-header
   %h1
     %span.title
-      = current_user.company_name
-      %i.icon-pencil.edit
-    != form_tag sessions_path, :method => :put, :class => "inline hidden" do
-      = text_field_tag :company_name, current_user.company_name
-      .btn-group.inline-block
-        = submit_tag :save, :class => "btn btn"
-        = button_tag("cancel", :type => 'reset', :class => "btn btn")
+      = user.company_name
+      - if editable
+        %i.icon-pencil.edit
+    - if editable
+      != form_tag sessions_path, :method => :put, :class => "inline hidden" do
+        = text_field_tag :company_name, user.company_name
+        .btn-group.inline-block
+          = submit_tag :save, :class => "btn btn"
+          = button_tag("cancel", :type => 'reset', :class => "btn btn")
 
     %small coffee.spec
