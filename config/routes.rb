@@ -1,11 +1,11 @@
 CoffeeSpec::Application.routes.draw do
 
-  match '/auth/:provider/callback' => 'authentication#create'
-
-  match "coffee" => "application#debug"
+  match '/auth/:provider/callback' => 'sessions#create'
 
   resources :drinks
 
-  root :to => "drinks#index"
+  resource :sessions
+
+  root :to => "application#landing"
 
 end

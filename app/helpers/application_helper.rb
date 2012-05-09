@@ -8,4 +8,5 @@ module ApplicationHelper
   def form_error(field)
     class_if(:error, @drink.errors.include?(field))
   end
+
 end

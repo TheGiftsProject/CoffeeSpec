@@ -1,0 +1,12 @@
+= link_to "Coffee.spec", root_path, :class => 'brand'
+%ul.nav.pull-right
+  - if user_signed_in?
+    %li
+      %a{:href => root_path}
+        %img{:src => current_user.image, :height => 19, :width => 19}
+        %strong= current_user.nickname
+    %li
+      = link_to('Sign out', sessions_path, :method=>'delete')
+  - else
+    %li
+      = link_to('Sign in', "/auth/github")
