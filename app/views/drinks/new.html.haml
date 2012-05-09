@@ -1,58 +1,22 @@
 != form_for @drink, :html => {:class => "form-horizontal"} do |f|
   != field_set_tag "Add new drink" do
 
-    .control-group
+    .control-group{ form_error(:name) }
       != f.label :name, "Name", :class => "control-label"
       .controls
         != f.text_field :name, :placeholder => "Employee name"
+        != render :partial => "common/form_error", :locals => {:field => :name}
 
-    .control-group
-      != f.label :drink_type_id, "Drink Type", :class => "control-label"
-      .controls
-        - DrinkType.all.each do |type|
-          != f.label :drink_type_id_v, :class => "radio inline" do
-            != f.radio_button :drink_type_id, type.id
-            = type.value.capitalize
-
-    .control-group
-      != f.label :strength_id, "Strength", :class => "control-label"
-      .controls
-        - Strength.all.each do |type|
-          != f.label :strength_id_v, :class => "radio inline" do
-            != f.radio_button :strength_id, type.id
-            = type.value.capitalize
-
-    .control-group
-      != f.label :milk_amount_id, "Milk Amount", :class => "control-label"
-      .controls
-        - MilkAmount.all.each do |type|
-          != f.label :milk_amount_id_v, :class => "radio inline" do
-            != f.radio_button :milk_amount_id, type.id
-            = type.value.capitalize
-
-    .control-group
-      != f.label :milk_type_id, "Milk Type", :class => "control-label"
-      .controls
-        - MilkType.all.each do |type|
-          != f.label :milk_type_id_v, :class => "radio inline" do
-            != f.radio_button :milk_type_id, type.id
-            = type.value.capitalize
-
-
-    .control-group
-      != f.label :sugar_amount_id, "Sugar Amount", :class => "control-label"
-      .controls
-        - SugarAmount.all.each do |type|
-          != f.label :sugar_amount_id_v, :class => "radio inline" do
-            != f.radio_button :sugar_amount_id, type.id
-            = type.value
-
-    .control-group
-      != f.label :sugar_type_id, "Sugar Type", :class => "control-label"
-      .controls
-        - SugarType.all.each do |type|
-          != f.label :sugar_type_id_v, :class => "radio inline" do
-            != f.radio_button :sugar_type_id, type.id
-            = type.value.capitalize
+    - [DrinkType, Strength, MilkAmount, MilkType, SugarAmount, SugarType].each do |modifier|
+      - mod_name = modifier.to_s.underscore
+      - input_name = :"#{mod_name}_id"
+      .control-group{ form_error(input_name) }
+        != f.label input_name, mod_name.humanize, :class => "control-label"
+        .controls
+          - modifier.all.each do |option|
+            != f.label :"#{input_name}_v", :class => "radio inline" do
+              != f.radio_button input_name, option.id
+              = option.value.to_s.humanize
+          != render :partial => "common/form_error", :locals => {:field => input_name}
 
   != submit_tag "Save", :class => "btn btn-large"

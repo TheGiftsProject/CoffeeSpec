@@ -11,16 +11,14 @@ class DrinksController < ApplicationController
   end
 
   def create
-    @drink = Drink.create(params[:drink])
-    if @drink.errors.empty?
-      redirect_to drinks_path
+    @drink = Drink.new(params[:drink])
+    if @drink.save
+      redirect_to drinks_path, :notice => "Drink added"
     else
-      flash[:error] = @drink.errors
-      redirect_to new_drink_path
+      render :action => :new
     end
   end
 
   def index
-
   end
 end

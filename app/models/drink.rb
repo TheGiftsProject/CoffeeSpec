@@ -11,6 +11,8 @@ class Drink < ActiveRecord::Base
   attr_accessible :name, :note
   attr_accessible :drink_type_id, :sugar_amount_id, :sugar_type_id, :milk_amount_id, :milk_type_id, :strength_id
 
+  validates_presence_of :name, :drink_type_id, :sugar_amount_id, :sugar_type_id, :milk_amount_id, :milk_type_id, :strength_id
+
   def description
     sentence = []
     sentence << strength if strength.present?

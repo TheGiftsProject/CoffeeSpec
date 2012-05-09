@@ -1,0 +1,5 @@
+- if @drink.errors[field]
+  %span.help-inline
+    %ul
+      - @drink.errors[field].each do |msg|
+        %li= msg
