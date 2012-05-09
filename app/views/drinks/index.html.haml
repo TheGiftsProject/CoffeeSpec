@@ -1,4 +1,4 @@
-- Drink.all.each_slice(2) do |drinks|
+- @drinks.each_slice(2) do |drinks|
   .row-fluid
     != render :partial => "common/drink", :locals => {:drink => drinks.first}
     - if drinks.second.present?

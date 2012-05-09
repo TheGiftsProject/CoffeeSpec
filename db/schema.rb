@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120509194420) do
+ActiveRecord::Schema.define(:version => 20120509195842) do
 
   create_table "drink_types", :force => true do |t|
     t.string   "value"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(:version => 20120509194420) do
     t.string   "note"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.integer  "user_id"
   end
 
   add_index "drinks", ["drink_type_id"], :name => "index_drinks_on_drink_type_id"

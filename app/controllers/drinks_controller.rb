@@ -1,17 +1,19 @@
 class DrinksController < ApplicationController
 
+  before_filter :must_be_logged_in
+
   def new
-    @drink = Drink.new(:drink_type_id => 1,
+    @drink = current_user.drinks.build(:drink_type_id => 1,
                        :strength_id => 2,
                        :milk_type_id => 1,
                        :milk_amount_id => 2,
                        :sugar_type_id => 1,
-                       :sugar_amount_id => 2
+                       :sugar_amount_id => 2,
     )
   end
 
   def create
-    @drink = Drink.new(params[:drink])
+    @drink = current_user.drinks.build(params[:drink])
     if @drink.save
       redirect_to drinks_path, :notice => "Drink added"
     else
@@ -20,5 +22,8 @@ class DrinksController < ApplicationController
   end
 
   def index
+    @drinks = current_user.drinks
   end
+
+
 end

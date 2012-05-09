@@ -1,3 +1,49 @@
-// Place all the styles related to the sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.page-header{
+
+  form.inline{
+    display: inline;
+    margin:0;
+    padding:0;
+    vertical-align: inherit;
+
+    input[type=text]{
+      font-size: inherit;
+      vertical-align: inherit;
+      font-weight: inherit;
+      border: none;
+      //box-shadow: none;
+      margin: 0;
+      padding: 0;
+      line-height: inherit;
+      display: inline;
+      color: inherit;
+      height: auto;
+      width: auto;
+    }
+
+    &.hidden{
+      display: none;
+    }
+  }
+
+
+  h1{
+    cursor: text;
+  }
+
+  .edit{
+    display :none;
+    vertical-align: middle;
+  }
+
+  .title:hover {
+    .edit{
+      display: inline-block;
+
+    }
+  }
+  .btn-group.inline-block{
+    display: inline-block;
+  }
+
+};

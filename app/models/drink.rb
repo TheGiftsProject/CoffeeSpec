@@ -1,5 +1,7 @@
 class Drink < ActiveRecord::Base
 
+  belongs_to :user
+
   belongs_to :drink_type
   belongs_to :sugar_type
   belongs_to :sugar_amount
@@ -8,10 +10,11 @@ class Drink < ActiveRecord::Base
   belongs_to :strength
   belongs_to :variation
 
-  attr_accessible :name, :note
+  attr_accessible :name, :note, :user
   attr_accessible :drink_type_id, :sugar_amount_id, :sugar_type_id, :milk_amount_id, :milk_type_id, :strength_id
 
   validates_presence_of :name, :drink_type_id, :sugar_amount_id, :sugar_type_id, :milk_amount_id, :milk_type_id, :strength_id
+  validates_presence_of :user
 
   def description
     sentence = []

@@ -1,5 +1,23 @@
 .hero-unit
-  %h1 Coffee.spec
-  %p Build your friends' coffee spec and start brewing some coffee
-  %p
-    %a.btn.btn-primary.btn-large{:href => "/auth/github"} Sign in to start
+  .row
+    .span5
+      %h1 Coffee.spec
+      %p
+      %p Build your friends' coffee specs, print it and start sharing some coffee
+      %p
+        %a.btn.btn-primary.btn-large{:href => "/auth/github"}
+          Sign in with GitHub to start
+
+    .span5{:style => "float: right;"}
+      %ul.thumbnails
+        %li.span4
+          %a.thumbnail
+            %img{:src => "http://placehold.it/360x268" }
+        %li.span2
+          %a.thumbnail
+            %img{:src => "http://placehold.it/160x120" }
+        %li.span2
+          %a.thumbnail
+            %img{:src => "http://placehold.it/160x120" }
+
+

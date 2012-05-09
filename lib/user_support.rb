@@ -22,4 +22,8 @@ module UserSupport
   def load_user
     User.find_by_uid(session[:user_id])
   end
+
+  def must_be_logged_in
+    render :template => "application/forbidden" unless user_signed_in?
+  end
 end
