@@ -20,6 +20,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def fail
+    redirect_to root_path, :alert => "Error authenticating"
+  end
+
   protected
 
   def auth_hash

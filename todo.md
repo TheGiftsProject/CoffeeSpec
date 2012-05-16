@@ -1,6 +1,6 @@
 ## Todo
 
-* Seperate User from company
+* Separate User from company
 * improve edit page to support hiding sugar_type/milk_type when selecting 0 sugar/milk
 * Add note to drink
 * Add variation to drink

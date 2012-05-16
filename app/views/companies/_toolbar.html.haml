@@ -1,0 +1,15 @@
+.btn-toolbar.pull-right
+  .btn-group
+    - if can_edit?
+      %a.btn.btn-medium.add{:href => new_company_drink_path(@company)}
+        %i.icon-plus-sign
+        Add drink
+    %a.btn.btn-medium.print{:href => "javascript:window.print()"}
+      %i.icon-print
+      Print spec
+    %a.btn.btn-medium.share{:href => "#"}
+      %i.icon-share
+      Share URL
+    .share-tooltip{:style => "display:none"}
+      %label Share URL
+      %input{:type => :text, :value => token_url(:token => @company.view_token)}

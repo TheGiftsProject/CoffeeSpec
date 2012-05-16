@@ -1,6 +1,8 @@
 class Drink < ActiveRecord::Base
 
-  belongs_to :user
+  belongs_to :company
+
+  ALL_LINKS = [:drink_type, :sugar_type, :sugar_amount, :milk_type, :milk_amount, :strength, :variation]
 
   belongs_to :drink_type
   belongs_to :sugar_type
@@ -10,11 +12,10 @@ class Drink < ActiveRecord::Base
   belongs_to :strength
   belongs_to :variation
 
-  attr_accessible :name, :note, :user
+  attr_accessible :name, :note, :company
   attr_accessible :drink_type_id, :sugar_amount_id, :sugar_type_id, :milk_amount_id, :milk_type_id, :strength_id
 
   validates_presence_of :name, :drink_type_id, :sugar_amount_id, :sugar_type_id, :milk_amount_id, :milk_type_id, :strength_id
-  validates_presence_of :user
 
   def description
     sentence = []
@@ -51,7 +52,11 @@ class Drink < ActiveRecord::Base
     sentence.join(" ")
   end
 
-  [:drink_type, :sugar_type, :sugar_amount, :milk_type, :milk_amount, :strength, :variation].each do |attribute|
+  def as_json(options)
+    super(:only => [:name], :methods => ALL_LINKS )
+  end
+
+  ALL_LINKS.each do |attribute|
     old_attribute = :"old_#{attribute}"
     alias_method old_attribute, attribute
     define_method(attribute) do
