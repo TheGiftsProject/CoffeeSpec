@@ -2,7 +2,7 @@
   != render :partial => "common/drink_infograph", :locals => {:drink => drink}
   %h2.name
     = drink.name
-    - if owner_signed_in?
-      %a{:href => drink_path(drink)}
+    - if can_edit?
+      %a{:href => edit_company_drink_path(drink.company, drink)}
         %i.icon-pencil.edit
   %p.description= drink.description

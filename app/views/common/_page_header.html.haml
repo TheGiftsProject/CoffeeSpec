@@ -1,17 +1,14 @@
 - content_for :title do
-  =user.company_name
-  __
-  Coffee.spec
-
+  = "#{company.name} | Coffee.Spec"
 .page-header
   %h1
     %span.title
-      = user.company_name
-      - if editable
+      = company.name
+      - if can_edit?
         %i.icon-pencil.edit
-    - if editable
-      != form_tag sessions_path, :method => :put, :class => "inline hidden" do
-        = text_field_tag :company_name, user.company_name
+    - if can_edit?
+      != form_tag company_path(company), :method => :put, :class => "inline hidden" do
+        = text_field_tag :name, company.name
         .btn-group.inline-block
           = submit_tag :save, :class => "btn btn"
           = button_tag("cancel", :type => 'reset', :class => "btn btn")

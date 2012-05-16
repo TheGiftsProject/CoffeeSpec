@@ -22,10 +22,8 @@
         .content
           .row
             .span12
-              - if @user.present? and not owner_signed_in?
-                = render :partial => 'common/page_header', :locals => {:user => @user, :editable => false}
-              - elsif user_signed_in?
-                = render :partial => 'common/page_header', :locals => {:user => current_user, :editable => true}
+              - if @company.present?
+                = render :partial => 'common/page_header', :locals => {:company => @company}
               = render 'layouts/messages'
               = yield
           %footer

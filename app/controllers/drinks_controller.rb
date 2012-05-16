@@ -1,10 +1,12 @@
 class DrinksController < ApplicationController
 
-  before_filter :must_be_logged_in, :except => [:view]
-  before_filter :load_drink, :only => [:update, :show, :destroy]
+  include CompanySupport
+
+  before_filter :can_edit?
+  before_filter :load_drink, :only => [:update, :edit, :destroy]
 
   def new
-    @drink = current_user.drinks.build(:drink_type_id => 1,
+    @drink = @company.drinks.build(:drink_type_id => 1,
                        :strength_id => 2,
                        :milk_type_id => 1,
                        :milk_amount_id => 2,
@@ -14,9 +16,9 @@ class DrinksController < ApplicationController
   end
 
   def create
-    @drink = current_user.drinks.build(params[:drink])
+    @drink = @company.drinks.build(params[:drink])
     if @drink.save
-      redirect_to drinks_path, :notice => "Drink added"
+      redirect_to company_dashboard, :notice => "Drink added"
     else
       render :action => :new
     end
@@ -25,39 +27,30 @@ class DrinksController < ApplicationController
   def update
     @drink.update_attributes(params[:drink])
     if @drink.save
-      redirect_to drinks_path, :notice => "Drink updated"
+      redirect_to company_dashboard, :notice => "Drink updated"
     else
       render :action => :new
     end
   end
 
   def index
-    @drinks = current_user.drinks
+    @drinks = @company.drinks
+    render :json => @drinks
   end
 
-  def show
+  def edit
     render :template => "drinks/new"
   end
 
   def destroy
-    @drink.update_attribute(:user, nil)
-    redirect_to drinks_path, :notice => "Drink deleted"
+    @drink.update_attribute(:company, nil)
+    redirect_to company_dashboard, :notice => "Drink deleted"
   end
-
-  def view
-    @user = User.find_by_token(params[:token])
-    if @user.nil?
-      redirect_to root_path, :error => "Wrong url given"
-    end
-    @drinks = @user.drinks
-    render :action => :index
-  end
-
 
   private
 
   def load_drink
-    @drink ||= current_user.drinks.find(params[:id])
+    @drink ||= @company.drinks.find(params[:id])
   end
 
 end

@@ -1,4 +1,4 @@
-!= form_for @drink, :html => {:class => "form-horizontal"} do |f|
+!= form_for [@company, @drink], :html => {:class => "form-horizontal"} do |f|
   != field_set_tag @drink.persisted? ? "Edit drink" : "Add new drink" do
 
     .control-group{ form_error(:name) }
@@ -20,8 +20,8 @@
           != render :partial => "common/form_error", :locals => {:field => input_name}
 
   != submit_tag "Save", :class => "btn btn-large"
-  != link_to "Cancel",drinks_path, :class => "btn btn-large"
+  != link_to "Cancel", company_path(@company, :token => @token), :class => "btn btn-large"
 
 - if @drink.persisted?
-  != form_for @drink, :method => :delete do |f|
+  != form_for [@company, @drink], :method => :delete do |f|
     != f.submit "Delete", :class => "btn btn-large btn-danger"

@@ -1,12 +1,14 @@
 CoffeeSpec::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'sessions#create'
+  match '/auth/failure' => 'sessions#fail'
 
-  resources :drinks
-
+  resources :companies do
+    resources :drinks
+  end
   resource :sessions
 
-  match "/view/:token" => "drinks#view", :as => :share
+  match "/t/:token" => "application#token_route", :as => :token
 
   root :to => "application#landing"
 

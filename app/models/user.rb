@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   attr_accessible :name, :nickname, :uid, :image
 
   has_many :drinks
-  before_create :generate_token
+  has_one :company
+
+  after_create :generate_company
 
   def self.find_or_create_from_auth_hash(auth_hash)
     uid = auth_hash[:uid]
@@ -12,21 +14,10 @@ class User < ActiveRecord::Base
     User.find_or_create_by_uid(uid, :name => name, :nickname => nickname, :image => image)
   end
 
-  def company_name
-    self[:company_name].presence || "#{nickname}'s spec"
-  end
-
   private
 
-  def generate_token
-    token = User.random_token
-    while User.find_all_by_token(token).count > 0
-      token = User.random_token
-    end
-    self.token = token
+  def generate_company
+    self.create_company(:name => "#{nickname}'s spec")
   end
 
-  def self.random_token
-    SecureRandom.urlsafe_base64(6)
-  end
 end

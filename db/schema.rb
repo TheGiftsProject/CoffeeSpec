@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516135312) do
+ActiveRecord::Schema.define(:version => 20120516140916) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
-    t.integer  "admin_id"
+    t.integer  "user_id"
     t.string   "view_token"
     t.string   "edit_token"
     t.datetime "created_at", :null => false
