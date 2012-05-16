@@ -131,6 +131,10 @@ $drink-width: 0.6 * $drink-height;
       font-size: 24px;
     }
 
+    &.brown::before{
+      color: brown;
+    }
+
     &.s05::before{
       content: "▪";
     }
@@ -145,6 +149,25 @@ $drink-width: 0.6 * $drink-height;
     }
     &.s30::before{
       content: "■■■";
+    }
+
+    &.artificial{
+
+      &.s05::before{
+        content: "・";
+      }
+      &.s10::before{
+        content: "●";
+      }
+      &.s15::before{
+        content: "●・";
+      }
+      &.s20::before{
+        content: "●●";
+      }
+      &.s30::before{
+        content: "●●●";
+      }
     }
   }
 }
