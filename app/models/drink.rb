@@ -2,6 +2,8 @@ class Drink < ActiveRecord::Base
 
   belongs_to :company
 
+  ALL_LINKS = [:drink_type, :sugar_type, :sugar_amount, :milk_type, :milk_amount, :strength, :variation]
+
   belongs_to :drink_type
   belongs_to :sugar_type
   belongs_to :sugar_amount
@@ -50,7 +52,11 @@ class Drink < ActiveRecord::Base
     sentence.join(" ")
   end
 
-  [:drink_type, :sugar_type, :sugar_amount, :milk_type, :milk_amount, :strength, :variation].each do |attribute|
+  def as_json(options)
+    super(:only => [:name], :methods => ALL_LINKS )
+  end
+
+  ALL_LINKS.each do |attribute|
     old_attribute = :"old_#{attribute}"
     alias_method old_attribute, attribute
     define_method(attribute) do
