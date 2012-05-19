@@ -13,4 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require ember
+//= require ember/coffee_spec
 //= require_tree .

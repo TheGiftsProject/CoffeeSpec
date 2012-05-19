@@ -1,17 +1,10 @@
 != render :partial => "toolbar"
-.drinks
-  - @drinks.each_slice(2) do |drinks|
-    .row-fluid
-      != render :partial => "common/drink", :locals => {:drink => drinks.first}
-      - if drinks.second.present?
-        != render :partial => "common/drink", :locals => {:drink => drinks.second}
-  - if @drinks.empty?
-    .well
-      - if can_edit?
-        %h2
-          You don't have any drinks.
-          = link_to "Add a drink", new_company_drink_path(@company, :token => @token)
-          and start brewing.
-      - else
-        %h2
-          There are no drinks for this company
+:erb
+  <script type='text/javascript'>
+    $(function() {
+      CoffeeSpec.drinksController.loadAll(<%= @drinks.to_json.html_safe %>);
+     });
+  </script>
+:handlebars
+  {{view CoffeeSpec.DrinksView}}
+
