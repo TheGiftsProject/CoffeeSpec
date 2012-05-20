@@ -20,7 +20,7 @@ $drink-width: 0.6 * $drink-height;
   }
   p{
     max-height: 30px;
-    color: #999
+    color: #999;
   }
   .edit{
     opacity: 0;
@@ -123,24 +123,51 @@ $drink-width: 0.6 * $drink-height;
     position: absolute;
     bottom: $glass-padding + 5px;
     left: $glass-padding + 5px;
-    width: 100%;
+    right: $glass-padding + 5px;
 
-    .piece{
-      width: 10px;
-      height: 10px;
-      background: white;
-      float: left;
-      margin-right: 10px;
-
-      &.half{
-        border-color: white transparent transparent white;
-        border-style: solid;
-        border-width: 5px;
-        background: transparent;
-        width: 0;
-        height: 0;
-      }
+    &::before{
+      content: "";
+      color: white;
+      font-size: 24px;
     }
 
+    &.brown::before{
+      color: #996414;
+    }
+
+    &.s05::before{
+      content: "▪";
+    }
+    &.s10::before{
+      content: "■";
+    }
+    &.s15::before{
+      content: "■▪";
+    }
+    &.s20::before{
+      content: "■■";
+    }
+    &.s30::before{
+      content: "■■■";
+    }
+
+    &.artificial{
+
+      &.s05::before{
+        content: "・";
+      }
+      &.s10::before{
+        content: "●";
+      }
+      &.s15::before{
+        content: "●・";
+      }
+      &.s20::before{
+        content: "●●";
+      }
+      &.s30::before{
+        content: "●●●";
+      }
+    }
   }
 }

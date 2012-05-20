@@ -19,7 +19,7 @@ class Drink < ActiveRecord::Base
 
   def description
     sentence = []
-    sentence << strength if strength.present?
+    sentence << strength if strength.present? and strength != "normal"
     sentence << drink_type
 
     if milk_amount.present?
@@ -28,7 +28,7 @@ class Drink < ActiveRecord::Base
         sentence << "a"
         sentence << milk_amount
         sentence << milk_type if milk_type.present?
-        sentence << "milk"
+        sentence << "of milk"
       else
         sentence << "no milk"
       end
@@ -36,14 +36,14 @@ class Drink < ActiveRecord::Base
 
     if sugar_amount.present?
       if sugar_amount > 0
-        sentence << "with"
+        sentence << "and"
         if sugar_amount % 1 > 0
           sentence << sugar_amount
         else
           sentence << sugar_amount.to_i
         end
         sentence << sugar_type if sugar_type.present?
-        sentence << "sugar"
+        sentence << "spoon of sugar"
       else
         sentence << "no sugar"
       end
