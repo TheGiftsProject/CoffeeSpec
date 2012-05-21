@@ -10,3 +10,4 @@
 * Good Print css
 * Support all combinations of drinks
 * Maybe move to canvas to draw drink (seems canvas support prints)
+* Add Juice, Black Coffee, Espresso, Latte, Water
