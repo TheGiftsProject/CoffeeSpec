@@ -32,6 +32,32 @@ header{
       &.soy{
         border-top-color: $soy-milk-color;
       }
+
+      &.none{
+        border-top: 0;
+        border-bottom: 0;
+      }
+
+      &.touch {
+        border-top-width: 5px;
+        border-bottom-width: 5px;
+      }
+
+      &.little{
+        border-top-width: 10px;
+      }
+
+      &.third {
+        border-top-width: 25px;
+      }
+      &.half {
+        border-top-width: 45px;
+      }
+      &.max {
+        border-top-width: 50px;
+      }
+
+
     }
     .essence{
       border-top: 100px solid blue;
