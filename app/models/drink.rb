@@ -23,12 +23,17 @@ class Drink < ActiveRecord::Base
     sentence << drink_type
 
     if milk_amount.present?
+      sentence << "with"
       if milk_amount != "none"
-        sentence << "with"
-        sentence << "a"
-        sentence << milk_amount
-        sentence << milk_type if milk_type.present?
-        sentence << "of milk"
+        sentence << "a" if milk_amount.touch? or milk_amount.little? or milk_amount.third?
+        if milk_amount.max?
+          sentence << "lots"
+        else
+          sentence << milk_amount.humanize
+        end
+        sentence << "of" if milk_amount.touch? or milk_amount.little? or milk_amount.max?
+        sentence << milk_type.humanize if milk_type.present? and !milk_type.regular?
+        sentence << "milk"
       else
         sentence << "no milk"
       end
@@ -42,8 +47,12 @@ class Drink < ActiveRecord::Base
         else
           sentence << sugar_amount.to_i
         end
-        sentence << sugar_type if sugar_type.present?
-        sentence << "spoon of sugar"
+        sentence << sugar_type if sugar_type.present? and sugar_type.brown?
+        if sugar_type.artificial?
+          sentence << "artificial sweetener"
+        else
+          sentence << "sugar"
+        end
       else
         sentence << "no sugar"
       end
@@ -62,7 +71,7 @@ class Drink < ActiveRecord::Base
     define_method(attribute) do
       object = send(old_attribute)
       return ActiveSupport::StringInquirer.new if object.nil?
-      ActiveSupport::StringInquirer.new(object.value) if object.value.is_a?(String)
+      return ActiveSupport::StringInquirer.new(object.value) if object.value.is_a?(String)
       object.value
     end
   end
