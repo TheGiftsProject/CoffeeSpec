@@ -15,6 +15,11 @@ header{
 .drinks .drink-container{
   width: 10%;
 }
+
+.drinks .add_drink_button{
+  visibility: hidden;
+}
+
 .drinks{
   overflow: hidden;
   width: 980px;
