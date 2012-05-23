@@ -22,8 +22,6 @@
         .content
           .row
             .span12
-              - if @company.present?
-                = render :partial => 'common/page_header', :locals => {:company => @company}
               = render 'layouts/messages'
               = yield
           %footer

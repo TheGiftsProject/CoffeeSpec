@@ -1,3 +1,4 @@
+= render :partial => 'common/page_header', :locals => {:company => @company}
 != render :partial => "toolbar"
 .drinks
   - @drinks.find_each do |drink|

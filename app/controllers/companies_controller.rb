@@ -2,8 +2,8 @@ class CompaniesController < ApplicationController
 
   include CompanySupport
 
-  before_filter :can_view?, :only => [:show]
-  before_filter :can_edit?, :only => [:update]
+  before_filter :must_view, :only => [:show]
+  before_filter :must_edit, :only => [:update]
 
   def show
     @drinks = @company.drinks
