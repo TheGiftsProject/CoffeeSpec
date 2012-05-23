@@ -1,23 +1,46 @@
-.hero-unit
+.landing
+  %h1.title Coffee.spec
+  %p A coffee spec sheet for your company ∙ Print it ∙ Hang it ∙ Enjoy more coffee just the way you like
+  %a.btn.btn-primary.btn-large{:href => "/auth/github"}
+    %i.icon-white.icon-user
+    Sign in with GitHub to start
+.features
   .row
-    .span5
-      %h1 Coffee.spec
-      %p
-      %p Build your friends' coffee specs, print it and start sharing some coffee
-      %p
-        %a.btn.btn-primary.btn-large{:href => "/auth/github"}
-          Sign in with GitHub to start
+    .span4
+      != image_tag "glypicons/glyphicons_043_group.png"
+      %h3 Manage a group or company
+      %p Know what everyone in your group likes to drink, input everyone yourself or send out a link and let everyone add themselves.
+    .span4
+      != image_tag "glypicons/glyphicons_294_coffe_cup.png"
+      %h3 Declare your drink
+      %p Everyone declares their drink of choice, so when you go make yourself a drink you'll get one for someone else too.
 
-    .span5{:style => "float: right;"}
-      %ul.thumbnails
-        %li.span4
-          %a.thumbnail
-            %img{:src => "http://placehold.it/360x268" }
-        %li.span2
-          %a.thumbnail
-            %img{:src => "http://placehold.it/160x120" }
-        %li.span2
-          %a.thumbnail
-            %img{:src => "http://placehold.it/160x120" }
+    .span4
+      != image_tag "glypicons/glyphicons_273_drink.png"
+      %h3 Drink Anything
+      %p Not only does Coffee.spec support a wide range of different ways to drink coffee, it also supports a multitude of other types of drinks.
 
 
+  .row
+    .span4
+      != image_tag "glypicons/glyphicons_015_print.png"
+      %h3 Print and Hang
+      %p Once you filled in everyone's drink, print the spec and hang it in your break room or kitchen.
+    .span4
+      != image_tag "glypicons/glyphicons_163_iphone.png"
+      %h3 Responsive UI
+      %p Works on your desktop computer and also on mobile phones. Going to the break room? take out your phone to see how Bob drinks his coffee.
+    .span4
+      != image_tag "glypicons/glyphicons_326_share.png"
+      %h3 Share your spec
+      %p Wanna brag that your group has a cooler drink spec then the guys from marketing? Post your spec on Facebook and watch the likes rack up :D
+
+  .row
+    .span3.offset3
+      != image_tag "glypicons/glyphicons_297_kettle.png"
+      %h3 Ask everyone
+      %p Boiling water? Let everyone know you're making hot drinks and let people send in requests.
+    .span3
+      != image_tag "glypicons/glyphicons_309_comments.png"
+      %h3 Natural Barista
+      %p comment and rate people on their coffee making skills and find out who is your office's natural barista.
