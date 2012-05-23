@@ -1,3 +1,5 @@
+@import "colors";
+
 $drink-height: 120px;
 $drink-width: 0.6 * $drink-height;
 
@@ -9,6 +11,8 @@ $drink-width: 0.6 * $drink-height;
   overflow: hidden;
   padding: 10px;
   box-sizing: border-box;
+  float: left;
+  margin: 0;
   .drink{
     float: left;
     margin-right: 50px
@@ -35,7 +39,6 @@ $drink-width: 0.6 * $drink-height;
 }
 
 .drink{
-  $glass-color: #777;
   $glass-padding: 10px;
   width: $drink-width;
   height: $drink-height;
@@ -57,7 +60,7 @@ $drink-width: 0.6 * $drink-height;
   }
 
   .milk{
-    background: white;
+    background: $regular-milk-color;
     width: 100%;
     height: 10%;
     float:left;
@@ -89,11 +92,11 @@ $drink-width: 0.6 * $drink-height;
 
 
     &.low_fat{
-      background: rgba(255, 255, 255, 0.8);
+      background: $lowfat-milk-color;
     }
 
     &.soy{
-      background: #fafad2;
+      background: $soy-milk-color;
     }
 
   }
@@ -103,19 +106,18 @@ $drink-width: 0.6 * $drink-height;
     width: 100%;
 
     &.coffee{
-      background: #ad8850;
+      background: $regular-coffee-color;
 
       &.light{
-        background: #dcb062;
+        background: $light-coffee-color;
       }
-
       &.strong{
-        background: #381f18;
+        background: $strong-coffee-color;
       }
     }
 
     &.tea{
-      background: #ce492f;
+      background: $tea-color;;
     }
   }
 
@@ -127,12 +129,12 @@ $drink-width: 0.6 * $drink-height;
 
     &::before{
       content: "";
-      color: white;
+      color: $white-sugar-color;
       font-size: 24px;
     }
 
     &.brown::before{
-      color: #996414;
+      color: $brown-sugar-color;
     }
 
     &.s05::before{

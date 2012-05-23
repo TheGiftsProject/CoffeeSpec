@@ -1,10 +1,7 @@
 != render :partial => "toolbar"
 .drinks
-  - @drinks.each_slice(2) do |drinks|
-    .row-fluid
-      != render :partial => "common/drink", :locals => {:drink => drinks.first}
-      - if drinks.second.present?
-        != render :partial => "common/drink", :locals => {:drink => drinks.second}
+  - @drinks.find_each do |drink|
+    != render :partial => "common/drink", :locals => {:drink => drink}
   - if @drinks.empty?
     .well
       - if can_edit?

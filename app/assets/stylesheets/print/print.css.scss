@@ -1,3 +1,5 @@
+@import "../colors";
+
 header{
   display: none;
 }
@@ -10,6 +12,54 @@ header{
   display: none;
 }
 
-.drink-container{
-  width: 40%;
+.drinks .drink-container{
+  width: 10%;
+}
+.drinks{
+  overflow: hidden;
+  width: 980px;
+  .drink{
+    border: 10px solid #777;
+    padding: 0;
+    .milk{
+      border-top: 10px solid $regular-milk-color; // by milk
+      height: 0;
+
+      &.low_fat{
+        border-top-color: $lowfat-milk-color;
+      }
+
+      &.soy{
+        border-top-color: $soy-milk-color;
+      }
+    }
+    .essence{
+      border-top: 100px solid blue;
+      height: 0;
+
+      &.coffee{
+        border-color: $regular-coffee-color;
+
+        &.light{
+          border-color: $light-coffee-color;
+        }
+        &.strong{
+          border-color: $strong-coffee-color;
+        }
+      }
+      &.tea{
+        border-color: $tea-color;
+      }
+    }
+    .sugar{
+      bottom: 5px;
+      left: 5px;
+      right: 5px;
+    }
+
+    &:after{
+      right: -35px;
+      top: 30px;
+    }
+  }
 }
