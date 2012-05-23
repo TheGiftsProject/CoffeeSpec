@@ -5,7 +5,7 @@
 $(document).ready( =>
   $(".share").zclip(
       path: "/ZeroClipboard.swf"
-      copy: -> $(@).data("url")
+      copy: -> $(@).attr("href")
       afterCopy: ->
         console.log("A",@)
         $(@).tooltip("show")
