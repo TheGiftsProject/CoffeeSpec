@@ -9,6 +9,8 @@ module CompanySupport
 
   def load_company
     @company = Company.find(params[:company_id] || params[:id])
+  rescue ActiveRecord::RecordNotFound
+    forbidden
   end
 
   def load_token
@@ -24,6 +26,14 @@ module CompanySupport
     (params[:token] == @company.view_token) or can_edit?
   end
 
+  def must_view
+    forbidden unless can_view?
+  end
+
+  def must_edit
+    forbidden unless can_edit?
+  end
+
   def company_dashboard
     if @token.present?
       company_path(@company, :token => @token)
@@ -31,5 +41,12 @@ module CompanySupport
       company_path(@company)
     end
   end
+
+  private
+
+  def forbidden
+    render :template => "application/forbidden"
+  end
+
 
 end

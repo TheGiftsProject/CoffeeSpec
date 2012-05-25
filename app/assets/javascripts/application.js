@@ -15,4 +15,5 @@
 //= require bootstrap
 //= require ember
 //= require ember/coffee_spec
+//= require jquery.zclip
 //= require_tree .

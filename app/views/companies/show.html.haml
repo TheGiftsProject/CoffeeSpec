@@ -1,3 +1,4 @@
+= render :partial => 'common/page_header', :locals => {:company => @company}
 != render :partial => "toolbar"
 :erb
   <script type='text/javascript'>
@@ -7,4 +8,3 @@
   </script>
 :handlebars
   {{view CoffeeSpec.DrinksView}}
-

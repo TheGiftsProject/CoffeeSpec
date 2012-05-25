@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def not_found
+
+  end
+
   protected
 
   include UserSupport
