@@ -6,10 +6,10 @@
 
 .add_drink{
   .drink{
-    @include opacity(0.1);
+    @include opacity(0.3);
   }
   .drink:after{
-    @include opacity(0.5);
+    @include opacity(1);
   }
   .drink:before{
     content: "+";
@@ -20,7 +20,10 @@
     font-weight: bold;
   }
   &:hover .drink{
-    @include opacity(0.15);
+    @include opacity(0.5);
+  }
+  &.drink_container:hover h2{
+    color: #333;
   }
   a{
     color: black;
@@ -32,10 +35,6 @@
     color: #555;
     margin: 0;
     text-decoration: none;
-    &:hover{
-      color: #333;
-    }
-
   }
   cursor: pointer;
 }
