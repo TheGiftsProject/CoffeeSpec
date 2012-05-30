@@ -1,4 +1,5 @@
 @import "colors";
+@import "compass/css3/border-radius";
 
 $drink-height: 120px;
 $drink-width: 0.6 * $drink-height;
@@ -46,6 +47,7 @@ $drink-width: 0.6 * $drink-height;
   padding: $glass-padding;
   position: relative;
   box-sizing: border-box;
+  @include border-bottom-radius(5px);
 
   &::after{
     border: $glass-padding solid $glass-color;
@@ -57,6 +59,7 @@ $drink-width: 0.6 * $drink-height;
     right: -25px;
     top: 40px;
     z-index: -1;
+    @include border-right-radius(5px);
   }
 
   .milk{
@@ -104,6 +107,7 @@ $drink-width: 0.6 * $drink-height;
   .essence{
     height: 100%;
     width: 100%;
+    @include border-bottom-radius(2px);
 
     &.coffee{
       background: $regular-coffee-color;

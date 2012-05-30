@@ -1,0 +1,8 @@
+.control-group{ form_error(aspect) }
+  != f.label aspect, aspect.to_s.humanize, :class => "control-label"
+  .controls
+    - values.each do |option|
+      != f.label "#{aspect}.#{option}", :class => "radio inline" do
+        != f.radio_button aspect, option
+        = option.to_s.humanize
+    != render :partial => "common/form_error", :locals => {:field => aspect}
