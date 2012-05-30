@@ -8,17 +8,14 @@
         != f.text_field :name, :placeholder => "Employee name"
         != render :partial => "common/form_error", :locals => {:field => :name}
 
-    - [DrinkType, Strength, MilkAmount, MilkType, SugarAmount, SugarType].each do |modifier|
-      - mod_name = modifier.to_s.underscore
-      - input_name = :"#{mod_name}_id"
-      .control-group{ form_error(input_name) }
-        != f.label input_name, mod_name.humanize, :class => "control-label"
-        .controls
-          - modifier.all.each do |option|
-            != f.label :"#{input_name}_v", :class => "radio inline" do
-              != f.radio_button input_name, option.id
-              = option.value.to_s.humanize
-          != render :partial => "common/form_error", :locals => {:field => input_name}
+    != render :partial => "common/radio_buttons", :locals => {:aspect => "drink_type", :values => Drink::DRINK_TYPES.keys, :f => f}
+
+    - Drink::DRINK_ASPECTS.each do |aspect, values|
+      - if values.is_a?(Array)
+        != render :partial => "common/radio_buttons", :locals => {:aspect => aspect, :values => values, :f => f}
+      - else
+        - values.each do |sub_aspect, sub_values|
+          != render :partial => "common/radio_buttons", :locals => {:aspect => "#{aspect}_#{sub_aspect}", :values => sub_values, :f => f}
 
   != submit_tag "Save", :class => "btn btn-large"
   != link_to "Cancel", company_path(@company, :token => @token), :class => "btn btn-large"

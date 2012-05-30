@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120516140916) do
+ActiveRecord::Schema.define(:version => 20120530133920) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -22,63 +22,13 @@ ActiveRecord::Schema.define(:version => 20120516140916) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "drink_types", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "drinks", :force => true do |t|
     t.string   "name"
-    t.integer  "drink_type_id"
-    t.integer  "sugar_type_id"
-    t.integer  "sugar_amount_id"
-    t.integer  "milk_type_id"
-    t.integer  "milk_amount_id"
-    t.integer  "strength_id"
-    t.integer  "variation_id"
-    t.string   "note"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
     t.integer  "company_id"
-  end
-
-  add_index "drinks", ["drink_type_id"], :name => "index_drinks_on_drink_type_id"
-  add_index "drinks", ["milk_amount_id"], :name => "index_drinks_on_milk_amount_id"
-  add_index "drinks", ["milk_type_id"], :name => "index_drinks_on_milk_type_id"
-  add_index "drinks", ["strength_id"], :name => "index_drinks_on_strength_id"
-  add_index "drinks", ["sugar_amount_id"], :name => "index_drinks_on_sugar_amount_id"
-  add_index "drinks", ["sugar_type_id"], :name => "index_drinks_on_sugar_type_id"
-  add_index "drinks", ["variation_id"], :name => "index_drinks_on_variation_id"
-
-  create_table "milk_amounts", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "milk_types", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "strengths", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sugar_amounts", :force => true do |t|
-    t.float    "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sugar_types", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "drink_type"
+    t.text     "drink_aspect_values"
   end
 
   create_table "users", :force => true do |t|
@@ -90,12 +40,6 @@ ActiveRecord::Schema.define(:version => 20120516140916) do
     t.string   "company_name"
     t.string   "image"
     t.string   "token"
-  end
-
-  create_table "variations", :force => true do |t|
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end

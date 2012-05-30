@@ -10,7 +10,7 @@ gem 'haml', '3.1.4'
 gem 'thin'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
-
+gem 'deep_merge'
 
 group :production do
   gem 'pg'
