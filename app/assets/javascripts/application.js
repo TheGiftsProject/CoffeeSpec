@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require emberjs
 //= require ember
 //= require ember/coffee_spec
 //= require jquery.zclip

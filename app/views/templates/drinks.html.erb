@@ -1,0 +1,9 @@
+<script data-template-name="drinks" type="text/x-handlebars-template">
+    <div class="drinks">
+      <div class="row-fluid">
+        {{#each CoffeeSpec.drinksController}}
+            {{view App.Views.Drink class="drink-container"}}
+        {{/each}}
+      </div>
+    </div>
+</script>
