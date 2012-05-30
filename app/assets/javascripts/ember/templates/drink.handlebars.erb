@@ -7,10 +7,10 @@
   <h2 class='name'>{{drink.name}}</h2>
   {{#if isEditing}}
     <div class="btn-group">
-        <button class="btn btn-mini dropdown-toggle"><span class="caret"></span></button>
+        <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Drink type<span class="caret"></span></button>
         <ul class="dropdown-menu">
           <% DrinkType.all.each do |type| %>
-            <li><%= type %></li>
+            <li><%= type.value %></li>
           <% end %>
         </ul>
     </div>
