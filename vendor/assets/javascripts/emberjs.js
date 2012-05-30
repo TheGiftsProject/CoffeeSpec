@@ -1,1 +1,1 @@
-//= require emberjs/ember-0.9.7.1.js
+//= require emberjs/ember-0.9.8.js
