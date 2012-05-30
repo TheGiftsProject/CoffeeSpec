@@ -20,17 +20,30 @@ class Drink < ActiveRecord::Base
       :tea_variation => [:earl_grey]
   }
 
+  FLAT_DRINK_ASPECTS = DRINK_ASPECTS.keys.map do |key|
+    if DRINK_ASPECTS[key].is_a? Hash
+      DRINK_ASPECTS[key].map do |sub_value,_|
+        :"#{key}_#{sub_value}"
+      end
+    else
+      key
+    end
+  end.flatten
+
+
   attr_accessible :name, :company
   attr_accessible :drink_type, :drink_aspect_values
 
   validates_presence_of :name, :drink_type
 
-  def drink_aspect_values
-    ActiveSupport::JSON.decode(self[:drink_aspect_values] || "{}").with_indifferent_access
-  end
-
-  def drink_aspect_values=(value)
-    self[:drink_aspect_values] = value.to_json
+  store :drink_aspect_values, :accessors => FLAT_DRINK_ASPECTS
+  FLAT_DRINK_ASPECTS.each do |key|
+    attr_accessible key
+    define_method(key) do
+      val = send(:drink_aspect_values)[key]
+      return ActiveSupport::StringInquirer.new(val) if val.is_a? String
+      val
+    end
   end
 
   def description
@@ -80,43 +93,6 @@ class Drink < ActiveRecord::Base
   def as_json(options)
     #super(:only => [:name], :methods => ALL_LINKS )
     super
-  end
-
-  def self.return_value(val)
-    return Float(val) if is_number?(val)
-    return ActiveSupport::StringInquirer.new if val.nil?
-    return ActiveSupport::StringInquirer.new(val) if val.is_a?(String)
-    val
-    end
-
-  def self.is_number?(object)
-    true if Float(object) rescue false
-  end
-
-  DRINK_ASPECTS.each do |aspect, values|
-    if values.is_a?(Array)
-      define_method(aspect.to_sym) do
-        return Drink.return_value(drink_aspect_values[aspect])
-      end
-      define_method(:"#{aspect}=") do |val|
-        self.drink_aspect_values = drink_aspect_values.merge({aspect => val})
-      end
-      attr_accessible aspect
-
-    else
-      values.each do |sub_aspect, _|
-        full_aspect_name = "#{aspect}_#{sub_aspect}".to_sym
-        attr_accessible full_aspect_name
-        define_method(full_aspect_name) do
-          v = drink_aspect_values[aspect]
-          v = v[sub_aspect] unless v.nil?
-          return Drink.return_value(v)
-        end
-        define_method(:"#{full_aspect_name}=") do |val|
-          self.drink_aspect_values = drink_aspect_values.deep_merge({aspect => {sub_aspect => val}})
-        end
-      end
-    end
   end
 
 end
