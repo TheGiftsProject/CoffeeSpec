@@ -6,5 +6,19 @@
       CoffeeSpec.drinksController.loadAll(<%= @drinks.to_json.html_safe %>);
      });
   </script>
-:handlebars
-  {{view CoffeeSpec.DrinksView}}
+
+.drinks
+  :handlebars
+    {{view CoffeeSpec.DrinksView}}
+- if @drinks.empty?
+  .well
+    - if can_edit?
+      %h2
+        You don't have any drinks.
+        = link_to "Add a drink", new_company_drink_path(@company, :token => @token)
+        and start brewing.
+    - else
+      %h2
+        There are no drinks for this company
+- else
+  != render :partial => "common/add_drink"
