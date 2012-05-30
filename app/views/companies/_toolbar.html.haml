@@ -7,9 +7,9 @@
     %a.btn.btn-medium.print{:href => "javascript:window.print()"}
       %i.icon-print
       Print spec
-    %a.btn.btn-medium.share{:href => "#"}
+    %a.btn.btn-medium.share{:href => token_url(:token => @company.view_token)}
       %i.icon-share
       Share URL
-    .share-tooltip{:style => "display:none"}
-      %label Share URL
-      %input{:type => :text, :value => token_url(:token => @company.view_token)}
+    %a.btn.btn-medium.share.edit{:href => token_url(:token => @company.edit_token)}
+      %i.icon-edit
+      Share Edit URL

@@ -3,10 +3,19 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready( =>
-  $(".share").popover (
-      placement: "bottom"
-      content: $('.share-tooltip').html()
-      delay: 1000
+  $(".share").zclip(
+      path: "/ZeroClipboard.swf"
+      copy: -> $(@).attr("href")
+      afterCopy: ->
+        console.log("A",@)
+        $(@).tooltip("show")
+        setTimeout(
+          => $(@).tooltip("hide")
+          800
+        )
+  ).tooltip(
+    title: "Copied to clipboard"
+    trigger: "manual"
   )
 
   #Initializing our Ember app global.

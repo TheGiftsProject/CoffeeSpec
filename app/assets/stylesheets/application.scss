@@ -28,3 +28,65 @@ body { padding-top: 60px; }
   //color: #381f18;
   //font-weight: bold;
 }
+
+.title{
+  font-weight: 200;
+}
+
+.landing{
+  h1{
+    font-size: 100px;
+    line-height: 120px;
+    color: #381f18;
+  }
+  p{
+    font-weight: 100;
+    font-size: 25px;
+    margin-left: 40px;
+  }
+
+  .btn{
+    width: 200px;
+    margin: 40px auto;
+    display: block;
+  }
+}
+
+footer{
+  p{
+    margin: 0;
+  }
+  .smaller{
+    font-size: 0.8em;
+  }
+}
+
+hr.soften{
+  height: 1px;
+  //margin: 14px 0;
+  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -moz-linear-gradient(left, transparent,  rgba(0, 0, 0, .1),  transparent);
+  background-image: -ms-linear-gradient(left,   transparent,  rgba(0, 0, 0, .1),  transparent);
+  background-image: -o-linear-gradient(left,   transparent,  rgba(0, 0, 0, .1),  transparent);
+  border: 0;
+}
+
+.features{
+
+  img{
+    float: left;
+    margin: 7px 10px 0 0;
+    opacity: .8;
+  }
+
+  h2{
+    font-weight: 300;
+  }
+
+  h3{
+    font-size: 20px;
+    line-height: 40px;
+    font-weight: 300;
+  }
+
+}

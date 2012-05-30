@@ -22,14 +22,18 @@
         .content
           .row
             .span12
-              - if @company.present?
-                = render :partial => 'common/page_header', :locals => {:company => @company}
               = render 'layouts/messages'
               = yield
           %footer
+            %hr
             %p
-              %hr
               Built and Designed by
               = link_to "@YonBergman", "http://twitter.com/yonbergman"
               and
-              = link_to "@ShayDavison", "http://twitter.com/yonbergman"
+              = link_to "@ShayDavidson", "http://twitter.com/ShayHDavidson"
+            %p.smaller
+              Icons from
+              = link_to "Glyphicons Free", "http://www.glyphicons.com/"
+              , licensed under
+              = link_to "CC BY 3.0", "http://creativecommons.org/licenses/by/3.0/deed.en"
+              = "."

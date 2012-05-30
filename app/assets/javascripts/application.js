@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require emberjs
+//= require jquery.zclip
 //= require_tree .
