@@ -8,14 +8,14 @@
         != f.text_field :name, :placeholder => "Employee name"
         != render :partial => "common/form_error", :locals => {:field => :name}
 
-    != render :partial => "common/radio_buttons", :locals => {:aspect => "drink_type", :values => Drink::DRINK_TYPES.keys, :f => f}
+    != render :partial => "common/radio_buttons", :locals => {:aspect => "drink_type", :values => Drink::DRINK_TYPES.keys, :f => f, :data => {}}
 
     - Drink::DRINK_ASPECTS.each do |aspect, values|
       - if values.is_a?(Array)
-        != render :partial => "common/radio_buttons", :locals => {:aspect => aspect, :values => values, :f => f}
+        != render :partial => "common/radio_buttons", :locals => {:aspect => aspect, :values => values, :f => f, :data => {:drink_types => drink_types_for(aspect)}}
       - else
         - values.each do |sub_aspect, sub_values|
-          != render :partial => "common/radio_buttons", :locals => {:aspect => "#{aspect}_#{sub_aspect}", :values => sub_values, :f => f}
+          != render :partial => "common/radio_buttons", :locals => {:aspect => "#{aspect}_#{sub_aspect}", :values => sub_values, :f => f, :data => {:drink_types => drink_types_for(aspect)}}
 
   != submit_tag "Save", :class => "btn btn-large"
   != link_to "Cancel", company_path(@company, :token => @token), :class => "btn btn-large"
