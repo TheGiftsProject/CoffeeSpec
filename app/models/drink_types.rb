@@ -10,6 +10,7 @@ module DrinkTypes
   }
 
   DRINK_ASPECTS = {
+      :strength => [:normal, :light, :strong],
       :milk => {
           :amount => [:none, :touch, :little, :third, :half],
           :type => [:regular, :low_fat, :soy]
@@ -18,7 +19,6 @@ module DrinkTypes
           :amount => [0.0, 0.5, 1.0, 1.5, 2.0, 3.0],
           :type => [:white, :brown, :artificial]
       },
-      :strength => [:normal, :light, :strong],
       :tea_variation => [:earl_grey]
   }
 
