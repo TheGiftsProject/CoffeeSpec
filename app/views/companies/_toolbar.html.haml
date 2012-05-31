@@ -6,6 +6,7 @@
     %a.btn.btn-medium.share{:href => token_url(:token => @company.view_token)}
       %i.icon-share
       Share URL
-    %a.btn.btn-medium.share.edit{:href => token_url(:token => @company.edit_token)}
-      %i.icon-edit
-      Share Edit URL
+    - if can_edit?
+      %a.btn.btn-medium.share.edit{:href => token_url(:token => @company.edit_token)}
+        %i.icon-edit
+        Share Edit URL

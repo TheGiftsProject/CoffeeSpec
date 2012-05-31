@@ -4,7 +4,7 @@ class EditableTitle
       title: @el.find(".title")
       form: @el.find("form")
       input: @el.find("#company_name")
-    @bind()
+    @bind() if @ui.form.length > 0
 
   bind: ->
     @ui.title.click( => @hide())
