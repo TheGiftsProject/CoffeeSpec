@@ -25,7 +25,7 @@ module DrinkTypes
   FLAT_DRINK_ASPECTS = DRINK_ASPECTS.keys.map do |key|
     if DRINK_ASPECTS[key].is_a? Hash
       DRINK_ASPECTS[key].map do |sub_value,_|
-        :"#{key}_#{sub_value}"
+        [key,sub_value].join("_").to_sym
       end
     else
       key
@@ -41,9 +41,10 @@ module DrinkTypes
 
     def make_string_inquirers(keys)
       keys.each do |key|
-        alias_method :"_#{key}", key
+        other_method_name = :"_#{key}"
+        alias_method other_method_name, key
         define_method(key) do
-          val = send(:"_#{key}")
+          val = send(other_method_name)
           return Float(val) if val.is_a_number?
           return ActiveSupport::StringInquirer.new(val) if val.is_a?(String)
           val
