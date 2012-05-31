@@ -2,7 +2,7 @@ class DrinksController < ApplicationController
 
   include CompanySupport
 
-  before_filter :can_edit?
+  before_filter :must_edit
   before_filter :load_drink, :only => [:update, :edit, :destroy]
 
   def new
