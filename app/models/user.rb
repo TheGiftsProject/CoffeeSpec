@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   after_create :generate_company
 
   def self.find_or_create_from_auth_hash(auth_hash)
-    uid = auth_hash[:uid]
+    uid = auth_hash[:uid].to_s
     name = auth_hash[:info][:name]
     nickname = auth_hash[:info][:nickname]
     image = auth_hash[:info][:image]

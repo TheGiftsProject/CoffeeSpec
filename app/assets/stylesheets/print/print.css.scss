@@ -1,4 +1,5 @@
 @import "../colors";
+@import "compass/css3/border-radius";
 
 header{
   display: none;
@@ -20,7 +21,7 @@ header{
   overflow: hidden;
   width: 980px;
   .drink{
-    border: 10px solid #777;
+    border: 10px solid $glass-color;
     padding: 0;
     .milk{
       border-top: 10px solid $regular-milk-color; // by milk
@@ -63,6 +64,7 @@ header{
     .essence{
       border-top: 100px solid blue;
       height: 0;
+      @include border-bottom-radius(0px);
 
       &.coffee{
         border-color: $regular-coffee-color;
@@ -85,7 +87,7 @@ header{
     }
 
     &:after{
-      right: -35px;
+      right: -28px;
       top: 30px;
     }
   }

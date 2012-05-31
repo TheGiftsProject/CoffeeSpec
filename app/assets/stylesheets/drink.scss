@@ -1,5 +1,7 @@
 @import "colors";
 @import "compass/css3/border-radius";
+@import "compass/css3/opacity";
+@import "compass/css3/images";
 
 $drink-height: 120px;
 $drink-width: 0.6 * $drink-height;
@@ -51,12 +53,13 @@ $drink-width: 0.6 * $drink-height;
 
   &::after{
     border: $glass-padding solid $glass-color;
+    border-left: none;
     background: white;
     content: "";
-    width: 25px;
+    width: 10px;
     height: 30px;
     position: absolute;
-    right: -25px;
+    right: -20px;
     top: 40px;
     z-index: -1;
     @include border-right-radius(5px);

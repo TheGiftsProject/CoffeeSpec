@@ -1,37 +1,16 @@
 class Drink < ActiveRecord::Base
+  include DrinkTypes
 
   belongs_to :company
-
-  DRINK_TYPES = {
-      :coffee => [:milk, :sugar, :strength],
-      :tea => [:milk, :sugar, :tea_variation]
-  }
-
-  DRINK_ASPECTS = {
-      :milk => {
-          :amount => [:none, :touch, :little, :third, :half],
-          :type => [:regular, :low_fat, :soy]
-      },
-      :sugar => {
-          :amount => [0, 0.5, 1, 1.5, 2, 3],
-          :type => [:white, :brown, :artificial]
-      },
-      :strength => [:normal, :light, :strong],
-      :tea_variation => [:earl_grey]
-  }
 
   attr_accessible :name, :company
   attr_accessible :drink_type, :drink_aspect_values
 
   validates_presence_of :name, :drink_type
 
-  def drink_aspect_values
-    ActiveSupport::JSON.decode(self[:drink_aspect_values] || "{}").with_indifferent_access
-  end
-
-  def drink_aspect_values=(value)
-    self[:drink_aspect_values] = value.to_json
-  end
+  store :drink_aspect_values, :accessors => FLAT_DRINK_ASPECTS
+  store_attr_accessibles FLAT_DRINK_ASPECTS
+  make_string_inquirers FLAT_DRINK_ASPECTS
 
   def description
     sentence = []
@@ -42,12 +21,8 @@ class Drink < ActiveRecord::Base
       sentence << "with"
       if milk_amount != "none"
         sentence << "a" if milk_amount.touch? or milk_amount.little? or milk_amount.third?
-        if milk_amount.max?
-          sentence << "lots"
-        else
-          sentence << milk_amount.humanize
-        end
-        sentence << "of" if milk_amount.touch? or milk_amount.little? or milk_amount.max?
+        sentence << milk_amount.humanize
+        sentence << "of" if milk_amount.touch? or milk_amount.little?
         sentence << milk_type.humanize if milk_type.present? and !milk_type.regular?
         sentence << "milk"
       else
@@ -78,45 +53,7 @@ class Drink < ActiveRecord::Base
   end
 
   def as_json(options)
-    #super(:only => [:name], :methods => ALL_LINKS )
-    super
-  end
-
-  def self.return_value(val)
-    return Float(val) if is_number?(val)
-    return ActiveSupport::StringInquirer.new if val.nil?
-    return ActiveSupport::StringInquirer.new(val) if val.is_a?(String)
-    val
-    end
-
-  def self.is_number?(object)
-    true if Float(object) rescue false
-  end
-
-  DRINK_ASPECTS.each do |aspect, values|
-    if values.is_a?(Array)
-      define_method(aspect.to_sym) do
-        return Drink.return_value(drink_aspect_values[aspect])
-      end
-      define_method(:"#{aspect}=") do |val|
-        self.drink_aspect_values = drink_aspect_values.merge({aspect => val})
-      end
-      attr_accessible aspect
-
-    else
-      values.each do |sub_aspect, _|
-        full_aspect_name = "#{aspect}_#{sub_aspect}".to_sym
-        attr_accessible full_aspect_name
-        define_method(full_aspect_name) do
-          v = drink_aspect_values[aspect]
-          v = v[sub_aspect] unless v.nil?
-          return Drink.return_value(v)
-        end
-        define_method(:"#{full_aspect_name}=") do |val|
-          self.drink_aspect_values = drink_aspect_values.deep_merge({aspect => {sub_aspect => val}})
-        end
-      end
-    end
+    super(:only => [:name, :drink_type], :methods => FLAT_DRINK_ASPECTS )
   end
 
 end

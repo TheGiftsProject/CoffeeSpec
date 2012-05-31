@@ -7,7 +7,6 @@ $(document).ready( =>
       path: "/ZeroClipboard.swf"
       copy: -> $(@).attr("href")
       afterCopy: ->
-        console.log("A",@)
         $(@).tooltip("show")
         setTimeout(
           => $(@).tooltip("hide")

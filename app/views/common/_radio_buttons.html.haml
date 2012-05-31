@@ -1,4 +1,4 @@
-.control-group{ form_error(aspect) }
+.control-group{ form_error(aspect, :data => data) }
   != f.label aspect, aspect.to_s.humanize, :class => "control-label"
   .controls
     - values.each do |option|

@@ -1,9 +1,5 @@
 .btn-toolbar.pull-right
   .btn-group
-    - if can_edit?
-      %a.btn.btn-medium.add{:href => new_company_drink_path(@company)}
-        %i.icon-plus-sign
-        Add drink
     %a.btn.btn-medium.print{:href => "javascript:window.print()"}
       %i.icon-print
       Print spec
