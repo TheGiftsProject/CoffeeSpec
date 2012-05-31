@@ -9,8 +9,8 @@
     <div class="btn-group">
         <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">Drink type<span class="caret"></span></button>
         <ul class="dropdown-menu">
-          <% DrinkType.all.each do |type| %>
-            <li><%= type.value %></li>
+          <% Drink::DRINK_TYPES.each do |k,v| %>
+            <li><%= k %></li>
           <% end %>
         </ul>
     </div>
