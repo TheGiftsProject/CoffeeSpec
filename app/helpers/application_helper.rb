@@ -9,4 +9,8 @@ module ApplicationHelper
     class_if(:error, @drink.errors.include?(field), option)
   end
 
+  def hide
+    {:style => "display: none;"}
+  end
+
 end
