@@ -1,5 +1,3 @@
-// add buttons.
-
 var port = chrome.extension.connect();
 $('.itsme').removeClass('hidden').click(function() {
     var token = $(this).data('token');
