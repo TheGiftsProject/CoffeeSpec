@@ -1,5 +1,5 @@
 .btn-group.normal_mode
-  %a.btn.btn-small.btn-warning.itsme.hidden
+  %a.btn.btn-small.btn-warning.itsme.hidden{:data => {:token => drink.token}}
     %i.icon-user.icon-white
     It's Me
   - if can_edit?

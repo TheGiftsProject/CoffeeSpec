@@ -65,8 +65,8 @@ class Drink < ActiveRecord::Base
     super(:only => [:name, :drink_type], :methods => FLAT_DRINK_ASPECTS )
   end
 
-  def generate_token
-    Digest::MD5.hexdigest(self[:id])
+  def token
+    Digest::MD5.hexdigest(self[:id].to_s)
   end
 
 end
