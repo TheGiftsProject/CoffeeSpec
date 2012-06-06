@@ -2,17 +2,20 @@
     "name": "CoffeeSpec Helper",
     "version": "0.1",
     "manifest_version": 2,
-    "description": "Help your coffee!",
+    "description": "A coffee spec helper!",
     "icons": {
-        "16": "assets/icon16.png",
-        "48": "assets/icon48.png",
-        "128": "assets/icon128.png" },
+        "16": "icons/icon16.png",
+        "48": "icons/icon48.png",
+        "128": "icons/icon128.png" },
     "browser_action": {
-        "default_icon": "assets/icon19.png"
+        "default_icon": "icons/icon19.png"
     },
     "content_scripts": [{
         "matches": ["<all_urls>"],
-        "js": ["coffespec.js"],
+        "js": ["coffeespec.js"],
         "run_at": "document_end"
-    }]
+    }],
+    "background": {
+        "scripts": ["background.js"]
+    }
 }
