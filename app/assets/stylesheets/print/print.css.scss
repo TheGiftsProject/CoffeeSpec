@@ -87,6 +87,15 @@ header{
       &.lemon { border-bottom-color: $lemon-juice-color; }
       &.grapefruit { border-bottom-color: $grapefruit-juice-color; }
     }
+    &.soft_drink .essence{
+       &.coke { border-bottom-color: $coke-color; }
+       &.sprite { border-bottom-color: $sprite-color; }
+       &.fanta{ border-bottom-color: $fanta-color; }
+       &.soda{ border-bottom-color: $soda-color; }
+       &:before{
+         left:10px;
+       }
+    } 
     .sugar{
       bottom: 5px;
       left: 5px;
