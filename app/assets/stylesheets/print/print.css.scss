@@ -12,6 +12,9 @@ header{
 .btn-toolbar{
   display: none;
 }
+.btn-group{
+  display: none;
+}
 
 .add_drink{
   display: none;
@@ -20,6 +23,9 @@ header{
 .drinks{
   overflow: hidden;
   width: 980px;
+  .drink_container{
+    width: 490px;
+  }
   .drink{
     border: 10px solid $glass-color;
     padding: 0;

@@ -3,5 +3,4 @@
   %h2.name
     = drink.name
   %p.description= drink.description.capitalize
-  - if can_edit?
-    != render :partial => "common/drink_toolbar", :locals => {:drink => drink}
+  != render :partial => "common/drink_toolbar", :locals => {:drink => drink}
