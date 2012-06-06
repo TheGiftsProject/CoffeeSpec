@@ -3,5 +3,6 @@
     %a.close{"data-dismiss" => "alert"} ×
     = content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String)
 
-- @drinks.each do |wants|
-  != render :partial => "common/wants", :locals => {:wants => wants}
+- if @drinks.present?
+  - @drinks.each do |wants|
+    != render :partial => "common/wants", :locals => {:wants => wants}
