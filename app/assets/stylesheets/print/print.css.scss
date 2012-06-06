@@ -30,7 +30,7 @@ header{
     border: 10px solid $glass-color;
     padding: 0;
     .milk{
-      border-top: 10px solid $regular-milk-color; // by milk
+      border-top: 0px solid $regular-milk-color; // by milk
       height: 0;
 
       &.low_fat{
