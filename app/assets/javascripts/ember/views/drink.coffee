@@ -3,5 +3,6 @@ CoffeeSpec.DrinkView = Ember.View.extend(
   milk: 'milk'
   essence: 'essence'
   sugar: 'sugar'
+  drinkClass: 'drink'
   isEditing: true
 )
