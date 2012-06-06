@@ -1,4 +1,4 @@
-.drink
-  .milk{:class => "#{drink.milk_type} #{drink.milk_amount}"}
-  .essence{:class => "#{drink.strength} #{drink.drink_type}"}
-  .sugar{:class => "#{drink.sugar_type} s#{drink.sugar_amount.to_s.gsub(".","")}"}
+.drink{:class => drink.drink_type }
+  .milk{:class => milk_classes(drink)}
+  .essence{:class => essence_classes(drink)}
+  .sugar{:class => sugar_classes(drink)}

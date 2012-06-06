@@ -51,7 +51,7 @@ $drink-width: 0.6 * $drink-height;
   box-sizing: border-box;
   @include border-bottom-radius(5px);
 
-  &::after{
+  &:after{
     border: $glass-padding solid $glass-color;
     border-left: none;
     background: white;
@@ -63,7 +63,16 @@ $drink-width: 0.6 * $drink-height;
     top: 40px;
     z-index: -1;
     @include border-right-radius(5px);
+    display: none;
+
   }
+  &.coffee, &.tea{
+    &:after{
+      display: block;
+    }
+  }
+
+
 
   .milk{
     background: $regular-milk-color;
@@ -111,21 +120,29 @@ $drink-width: 0.6 * $drink-height;
     height: 100%;
     width: 100%;
     @include border-bottom-radius(2px);
+  }
 
-    &.coffee{
-      background: $regular-coffee-color;
+  &.coffee .essence{
+    background: $regular-coffee-color;
 
-      &.light{
-        background: $light-coffee-color;
-      }
-      &.strong{
-        background: $strong-coffee-color;
-      }
+    &.light{
+      background: $light-coffee-color;
     }
-
-    &.tea{
-      background: $tea-color;;
+    &.strong{
+      background: $strong-coffee-color;
     }
+  }
+
+  &.tea .essence{
+    background: $tea-color;;
+  }
+  &.water .essence{
+    background: $water-color;
+  }
+  &.juice .essence{
+    &.orange { background: $orange-juice-color; }
+    &.lemon { background: $lemon-juice-color; }
+    &.grapefruit { background: $grapefruit-juice-color; }
   }
 
   .sugar{

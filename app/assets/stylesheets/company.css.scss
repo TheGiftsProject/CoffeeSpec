@@ -9,6 +9,7 @@
     @include opacity(0.3);
   }
   .drink:after{
+    display: block;
     @include opacity(1);
   }
   .drink:before{
