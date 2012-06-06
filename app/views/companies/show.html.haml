@@ -4,6 +4,8 @@
   <script type='text/javascript'>
     $(function() {
       CoffeeSpec.drinksController.loadAll(<%= @drinks.to_json %>);
+      CoffeeSpec.drinkTypeController.loadAll(<%= Drink::DRINK_TYPES.keys.to_json %>);
+      CoffeeSpec.milkTypesController.loadAll(<%= Drink::DRINK_ASPECTS[:milk][:type].to_json %>);
      });
   </script>
 

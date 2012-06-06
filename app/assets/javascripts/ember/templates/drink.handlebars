@@ -1,0 +1,30 @@
+<div class="drink_container span6">
+  <div {{bindAttr class="drinkClass drink.drink_type"}}>
+    <div {{bindAttr class="milk drink.milk_type drink.milk_amount"}}></div>
+    <div {{bindAttr class="essence drink.strength"}}></div>
+    <div {{bindAttr class="sugar drink.sugar_type drink.sugar_computed"}}></div>
+  </div>
+  <h2 class='name'>{{drink.name}}</h2>
+  {{#if isEditing}}
+
+    {{view Ember.Select
+           contentBinding="CoffeeSpec.drinkTypeController"
+           selectionBinding="drink.drink_type"
+           optionLabelPath="content"
+           optionValuePath="content"
+           prompt="Pick a drink"
+    }}
+
+    {{view Ember.Select
+               contentBinding="CoffeeSpec.milkTypesController"
+               selectionBinding="drink.milk_type"
+               optionLabelPath="content"
+               optionValuePath="content"
+               prompt="Pick milk type"
+               isVisibleBinding="drink.isCoffee"
+    }}
+
+  {{else}}
+    <p class='description'>{{drink.description}}</p>
+  {{/if}}
+</div>

@@ -5,9 +5,12 @@ CoffeeSpec.Drink = Ember.Object.extend(
     return "s#{amount.replace(".", "")}"
   ).property('sugar_amount')
 
+  isCoffee: (->
+    @drink_type == 'coffee'
+  ).property('drink_type')
+
   description: (->
     #strength drink_type with milk_amount of milk and sugar_amount sugar
     "#{@strength} #{@drink_type} with #{@milk_amount} of milk and #{@sugar_amount} sugar"
   ).property('milk_type', 'milk_amount', 'strength', 'drink_type', 'sugar_type', 'sugar_amount')
-
 )
