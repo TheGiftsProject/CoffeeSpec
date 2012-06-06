@@ -1,5 +1,5 @@
 = render :partial => 'common/page_header', :locals => {:company => @company}
-!= form_for [@company, @drink], :html => {:class => "form-horizontal"} do |f|
+!= form_for [@company, @drink], :html => {:class => "form-horizontal drink-form"} do |f|
   != field_set_tag @drink.persisted? ? "Edit drink" : "Add new drink" do
 
     .control-group{ form_error(:name) }
