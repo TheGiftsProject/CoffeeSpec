@@ -150,7 +150,24 @@ $drink-width: 0.6 * $drink-height;
     &.grapefruit { background: $grapefruit-juice-color; }
   }
 
-  &.water, &.juice{
+  &.soft_drink .essence{
+    &.coke { background: $coke-color; }
+    &.sprite { background: $sprite-color; }
+    &.fanta{ background: $fanta-color; }
+    &.soda{ background: $soda-color; }
+    &:before{
+      content: "●\A      ●\A\A  ●";
+      white-space:pre;
+      color: white;
+      position: absolute;
+      font-size: 18px;
+      left: $glass-padding + 10px;
+      right: $glass-padding + 5px;
+      bottom: $glass-padding + 15px;
+    }
+  }
+
+  &.water, &.juice, &.soft_drink{
     .essence{
       border-top: 10px solid white;
       margin-top: -10px;
