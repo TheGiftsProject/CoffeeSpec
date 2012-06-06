@@ -15,9 +15,10 @@ class Drink < ActiveRecord::Base
   def description
     sentence = []
     sentence << strength if strength.present? and strength != "normal"
-    sentence << juice_variation.humanize if juice_variation.present?
-    sentence << tea_variation.humanize if tea_variation.present?
-    sentence << drink_type
+    sentence << juice_variation.humanize if juice_variation.present? and drink_type == 'juice'
+    sentence << tea_variation.humanize if tea_variation.present? and drink_type == 'tea'
+    sentence << soft_drink_variation.humanize if soft_drink_variation.present? and drink_type == "soft_drink"
+    sentence << drink_type unless drink_type == "soft_drink"
 
     drink_aspects = DRINK_TYPES[drink_type.to_sym]
 

@@ -15,6 +15,7 @@
 // Set the correct sprite paths
 $iconSpritePath: url(image-path('glyphicons-halflings.png'));
 $iconWhiteSpritePath: url(image-path('glyphicons-halflings-white.png'));
+.icon-bullhorn{ background-position: -24px -144px; }
 $navbarBackground: #381f18;
 $navbarBackgroundHighlight: lighten($navbarBackground, 10);
 $navbarLinkColor: white;
