@@ -96,12 +96,11 @@ $drink-width: 0.6 * $drink-height;
 
     &.none{
       height: 0;
-
     }
 
     &.touch {
       height: 5%;
-      border-bottom-width: $glass-padding / 2;
+      border-bottom: $glass-padding / 2 solid $glass-color;
     }
 
     &.little{
