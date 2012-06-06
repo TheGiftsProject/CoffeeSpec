@@ -15,37 +15,45 @@ class Drink < ActiveRecord::Base
   def description
     sentence = []
     sentence << strength if strength.present? and strength != "normal"
+    sentence << juice_variation.humanize if juice_variation.present?
+    sentence << tea_variation.humanize if tea_variation.present?
     sentence << drink_type
 
-    if milk_amount.present?
-      sentence << "with"
-      if milk_amount != "none"
-        sentence << "a" if milk_amount.touch? or milk_amount.little? or milk_amount.third?
-        sentence << milk_amount.humanize
-        sentence << "of" if milk_amount.touch? or milk_amount.little?
-        sentence << milk_type.humanize if milk_type.present? and !milk_type.regular?
-        sentence << "milk"
-      else
-        sentence << "no milk"
+    drink_aspects = DRINK_TYPES[drink_type.to_sym]
+
+    if drink_aspects.include? :milk
+      if milk_amount.present?
+        sentence << "with"
+        if milk_amount != "none"
+          sentence << "a" if milk_amount.touch? or milk_amount.little? or milk_amount.third?
+          sentence << milk_amount.humanize
+          sentence << "of" if milk_amount.touch? or milk_amount.little?
+          sentence << milk_type.humanize if milk_type.present? and !milk_type.regular?
+          sentence << "milk"
+        else
+          sentence << "no milk"
+        end
       end
     end
 
-    if sugar_amount.present?
-      if sugar_amount > 0
-        sentence << "and"
-        if sugar_amount % 1 > 0
-          sentence << sugar_amount
+    if drink_aspects.include? :sugar
+      if sugar_amount.present?
+        if sugar_amount > 0
+          sentence << "and"
+          if sugar_amount % 1 > 0
+            sentence << sugar_amount
+          else
+            sentence << sugar_amount.to_i
+          end
+          sentence << sugar_type if sugar_type.present? and sugar_type.brown?
+          if sugar_type.artificial?
+            sentence << "artificial sweetener"
+          else
+            sentence << "sugar"
+          end
         else
-          sentence << sugar_amount.to_i
+          sentence << "no sugar"
         end
-        sentence << sugar_type if sugar_type.present? and sugar_type.brown?
-        if sugar_type.artificial?
-          sentence << "artificial sweetener"
-        else
-          sentence << "sugar"
-        end
-      else
-        sentence << "no sugar"
       end
     end
 
