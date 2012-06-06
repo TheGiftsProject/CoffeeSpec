@@ -145,6 +145,13 @@ $drink-width: 0.6 * $drink-height;
     &.grapefruit { background: $grapefruit-juice-color; }
   }
 
+  &.water, &.juice{
+    .essence{
+      border-top: 10px solid white;
+      margin-top: -10px;
+    }
+  }
+
   .sugar{
     position: absolute;
     bottom: $glass-padding + 5px;
