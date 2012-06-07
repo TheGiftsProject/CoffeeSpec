@@ -1,35 +1,52 @@
 class SmartDrinkForm
   constructor: (@el) ->
     @ui =
+      anyInput: @el.find("input")
       drinkTypeRadios: @el.find("input[name='drink[drink_type]']")
       allAspects: @el.find(".control-group[data-drink_types]")
-      milkAmount: $("label[for='drink_milk_amount']").parent().find("input")
-      milkType: $("label[for='drink_milk_type']").parent()
-      sugarAmount: $("label[for='drink_sugar_amount']").parent().find("input")
-      sugarType: $("label[for='drink_sugar_type']").parent()
+      milkAmount: @el.find("label[for='drink_milk_amount']").parent().find("input")
+      milkType: @el.find("label[for='drink_milk_type']").parent()
+      sugarAmount: @el.find("label[for='drink_sugar_amount']").parent().find("input")
+      sugarType: @el.find("label[for='drink_sugar_type']").parent()
+      preview: @el.find(".drink_preview .drink")
+
 
     @aspects = @_loadDrinkTypeAspects()
+
+    @blankPreview = @ui.preview.html()
 
     @bind()
     @refresh()
 
-
   bind: ->
-    @ui.drinkTypeRadios.change(=> @refresh())
-    @ui.milkAmount.change(=> @refreshMilk())
-    @ui.sugarAmount.change(=> @refreshSugar())
+    @ui.anyInput.change(=> @refresh())
 
   refresh: ->
-    @ui.allAspects.hide()
-    @aspects[@currentDrinkType()].show();
-    @refreshMilk()
-    @refreshSugar()
+    @_refreshMilk()
+    @_refreshSugar()
+    @_refreshAssets()
+    @_refreshPreview()
 
-  refreshMilk: ->
+  _refreshPreview: ->
+    @ui.preview.html(@blankPreview).removeClass().addClass("drink")
+    @ui.preview.addClass(@currentDrinkType())
+    currentAspects = @aspects[@currentDrinkType()]
+    @ui.preview.find(".milk").addClass(currentAspects.find("input[name^='drink[milk']:checked").map(-> $(@).val()).toArray().join(" "))
+    @ui.preview.find(".sugar").addClass(currentAspects.find("input[name^='drink[sugar']:checked").map(-> $(@).val()).toArray().join(" "))
+    unless currentAspects.find("input[name^='drink[sugar_amount]']:checked").length == 0
+      @ui.preview.find(".sugar").addClass("s" + currentAspects.find("input[name^='drink[sugar_amount]']:checked").val().toString().replace(".",""))
+    @ui.preview.find(".essence").addClass(currentAspects.find("input:checked").map(-> $(@).val()).toArray().join(" "))
+
+
+  _refreshAssets: ->
+    @ui.allAspects.hide()
+    @aspects[@currentDrinkType()].show()
+
+  _refreshMilk: ->
     hide = @ui.milkAmount.val() == @ui.milkAmount.filter(":checked").val()
     @ui.milkType.toggle(!hide)
 
-  refreshSugar: ->
+  _refreshSugar: ->
     hide = @ui.sugarAmount.val() == @ui.sugarAmount.filter(":checked").val()
     @ui.sugarType.toggle(!hide)
     
