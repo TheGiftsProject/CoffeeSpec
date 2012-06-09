@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe :drink_validations do
 
   it "drink should not be valid if no name" do

@@ -41,4 +41,6 @@ end
 group :test, :development do
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'growl'
+  gem 'guard-spork'
 end
