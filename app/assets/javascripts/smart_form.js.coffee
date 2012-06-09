@@ -22,9 +22,9 @@ class SmartDrinkForm
     @ui.anyInput.change(=> @refresh())
 
   refresh: ->
+    @_refreshAssets()
     @_refreshMilk()
     @_refreshSugar()
-    @_refreshAssets()
     @_refreshPreview()
 
   _refreshPreview: ->
@@ -43,12 +43,12 @@ class SmartDrinkForm
     @aspects[@currentDrinkType()].show()
 
   _refreshMilk: ->
-    hide = @ui.milkAmount.val() == @ui.milkAmount.filter(":checked").val()
-    @ui.milkType.toggle(!hide)
+    if @ui.milkAmount.val() == @ui.milkAmount.filter(":checked").val()
+      @ui.milkType.hide()
 
   _refreshSugar: ->
-    hide = @ui.sugarAmount.val() == @ui.sugarAmount.filter(":checked").val()
-    @ui.sugarType.toggle(!hide)
+    if @ui.sugarAmount.val() == @ui.sugarAmount.filter(":checked").val()
+      @ui.sugarType.hide()
     
   currentDrinkType: ->
     @ui.drinkTypeRadios.filter(":checked").val()
