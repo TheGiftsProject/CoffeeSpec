@@ -1,5 +1,6 @@
 class Drink < ActiveRecord::Base
   include DrinkTypes
+  validates_with DrinkValidation
 
   belongs_to :company
 

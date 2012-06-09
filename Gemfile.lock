@@ -64,7 +64,13 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.0)
       multipart-post (~> 1.1)
+    ffi (1.0.11)
     fssm (0.2.9)
+    guard (1.1.1)
+      listen (>= 0.4.2)
+      thor (>= 0.14.6)
+    guard-rspec (1.0.0)
+      guard (>= 1.1)
     haml (3.1.4)
     hashie (1.2.0)
     hike (1.2.1)
@@ -77,6 +83,10 @@ GEM
     json (1.7.1)
     linecache19 (0.5.12)
       ruby_core_source (>= 0.1.4)
+    listen (0.4.4)
+      rb-fchange (~> 0.0.5)
+      rb-fsevent (~> 0.9.1)
+      rb-inotify (~> 0.8.8)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
@@ -122,6 +132,11 @@ GEM
       rdoc (~> 3.4)
       thor (~> 0.14.6)
     rake (0.9.2.2)
+    rb-fchange (0.0.5)
+      ffi
+    rb-fsevent (0.9.1)
+    rb-inotify (0.8.8)
+      ffi (>= 0.5.0)
     rdoc (3.12)
       json (~> 1.4)
     rspec (2.10.0)
@@ -178,6 +193,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   deep_merge
+  guard-rspec
   haml (= 3.1.4)
   jquery-rails
   mysql2
