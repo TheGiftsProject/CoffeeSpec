@@ -4,16 +4,14 @@ CoffeeSpec::Application.routes.draw do
   match '/auth/failure' => 'sessions#fail'
 
   resources :companies, :only => [:show, :update] do
-    resources :drinks do
-      member do
-        get :want
-        get :making
-      end
-    end
-
+    resources :drinks
   end
   resource :sessions
 
+  match "/drinks/:drink_token/wants" => "drinks#want"
+  match "/drinks/:drink_token/making" => "drinks#making"
+  match "/drinks/:drink_token/edit" => "drinks#edit"
+  
   match "/t/:token" => "application#token_route", :as => :token
 
   root :to => "application#landing"
