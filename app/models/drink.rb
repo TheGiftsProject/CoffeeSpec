@@ -13,6 +13,8 @@ class Drink < ActiveRecord::Base
   store_attr_accessibles FLAT_DRINK_ASPECTS
   make_string_inquirers FLAT_DRINK_ASPECTS
 
+  after_create :generate_token
+
   def description
     sentence = []
     sentence << strength if strength.present? and strength != "normal"
@@ -66,8 +68,8 @@ class Drink < ActiveRecord::Base
     super(:only => [:name, :drink_type], :methods => FLAT_DRINK_ASPECTS )
   end
 
-  def token
-    Digest::MD5.hexdigest(self[:id].to_s)
+  def generate_token
+    update_attribute(:token, Digest::MD5.hexdigest(self[:id].to_s))
   end
 
 end

@@ -4,7 +4,13 @@ CoffeeSpec::Application.routes.draw do
   match '/auth/failure' => 'sessions#fail'
 
   resources :companies, :only => [:show, :update] do
-    resources :drinks
+    resources :drinks do
+      member do
+        get :want
+        get :making
+      end
+    end
+
   end
   resource :sessions
 

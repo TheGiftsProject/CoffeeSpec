@@ -8,7 +8,8 @@
         "48": "icons/icon48.png",
         "128": "icons/icon128.png" },
     "browser_action": {
-        "default_icon": "icons/icon19.png"
+        "default_icon": "icons/icon19.png",
+        "default_popup": "popup.html"
     },
     "content_scripts": [{
         "matches": ["http://coffeespec.dev/*", "http://coffeespec.heroku.com/*"],
