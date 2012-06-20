@@ -159,10 +159,45 @@ $drink-width: 0.6 * $drink-height;
     }
   }
 
-  &.tea .essence{
-    &.earl_grey { background: $earl-grey-tea-color; }
-    &.herbal { background: $herbal-tea-color; }
-    &.green { background: $green-tea-color;}
+  &.tea{
+    .teabag{
+      $string-length: 60px;
+
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 25px;
+      background: $teabag-color;
+      top: $string-length;
+      left: 5px;
+      z-index: 5;
+      &:before{
+        content: "";
+        position: absolute;
+        width: 10px;
+        border-bottom: 7px solid $teabag-color;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        top: -7px;
+        left: 0;
+        z-index: 5;
+      }
+      &:after{
+        content: "";
+        position: absolute;
+        width: 2px;
+        height: $string-length;
+
+        background: $teabag-string-color;
+        top: -1 * $string-length;
+        left: 9px;
+      }
+    }
+    .essence{
+      &.earl_grey { background: $earl-grey-tea-color; }
+      &.herbal { background: $herbal-tea-color; }
+      &.green { background: $green-tea-color;}
+    }
   }
   &.water .essence{
     background: $water-color;
