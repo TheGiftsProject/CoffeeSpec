@@ -9,11 +9,13 @@ function(request, sender, sendResponse) {
 });
 
 function wants() {
-    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "GET"})
+    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "GET"});
 }
 
 function making() {
-    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "GET"})
+    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "GET"});
+    var notification = webkitNotifications.createHTMLNotification("notification.html");
+    notification.show();
 }
 
 function edit() {

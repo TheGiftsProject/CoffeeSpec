@@ -24,6 +24,7 @@
       "http://localhost:3000/*",
       "https://*/*",
       "tabs",
-      "background"
+      "background",
+      "notifications"
     ]
 }
