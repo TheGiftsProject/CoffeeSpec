@@ -7,3 +7,16 @@ function(request, sender, sendResponse) {
         localStorage['token'] = request.token;
     }
 });
+
+function wants() {
+    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "jsonp"})
+}
+
+function making() {
+    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "jsonp"})
+}
+
+function edit() {
+    var token = localStorage['token'];
+    chrome.tabs.create({'url': 'http://coffeespec.herokuapp.com/drinks/' + token + '/edit'});
+}

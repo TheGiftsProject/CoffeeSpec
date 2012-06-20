@@ -8,10 +8,10 @@ CoffeeSpec::Application.routes.draw do
   end
   resource :sessions
 
-  match "/drinks/:drink_token/wants" => "drinks#want"
+  match "/drinks/:drink_token/wants" => "drinks#wants"
   match "/drinks/:drink_token/making" => "drinks#making"
   match "/drinks/:drink_token/edit" => "drinks#edit"
-  
+
   match "/t/:token" => "application#token_route", :as => :token
 
   root :to => "application#landing"
