@@ -17,6 +17,6 @@
         "run_at": "document_end"
     }],
     "background": {
-        "scripts": ["background.js"]
+        "scripts": ["jquery.js", "background.js"]
     }
 }
