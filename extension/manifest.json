@@ -12,7 +12,7 @@
         "default_popup": "popup.html"
     },
     "content_scripts": [{
-        "matches": ["http://coffeespec.dev/*", "http://coffeespec.heroku.com/*"],
+        "matches": ["http://localhost:3000/*", "http://coffeespec.dev/*", "http://coffeespec.heroku.com/*"],
         "js": ["jquery.js", "coffeespec.js"],
         "run_at": "document_end"
     }],
