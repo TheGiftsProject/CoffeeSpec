@@ -1,0 +1,19 @@
+.btn-group.normal_mode
+  %a.btn.btn-small.btn-warning.itsme.hidden{:data => {:token => drink.token}}
+    %i.icon-user.icon-white
+    It's Me
+  - if can_edit?
+    %a.btn.btn-small.edit{:href => edit_company_drink_path(drink.company, drink)}
+      %i.icon-edit
+      Edit
+- if can_edit?
+  .btn-group.edit_mode{ hide }
+    %a.btn.btn-small.save{:href => "javascript:;"}
+      %i.icon-ok
+      Save
+    %a.btn.btn-small.cancel{:href => "javascript:;"}
+      %i.icon-remove
+      Cancel
+    %a.btn.btn-small.delete{:href => "javascript:;"}
+      %i.icon-trash
+      Delete

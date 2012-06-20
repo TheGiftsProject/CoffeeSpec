@@ -1,5 +1,6 @@
 class Drink < ActiveRecord::Base
   include DrinkTypes
+  validates_with DrinkValidator
 
   belongs_to :company
 
@@ -12,12 +13,15 @@ class Drink < ActiveRecord::Base
   store_attr_accessibles FLAT_DRINK_ASPECTS
   make_string_inquirers FLAT_DRINK_ASPECTS
 
+  after_create :generate_token
+
   def description
     sentence = []
     sentence << strength if strength.present? and strength != "normal"
-    sentence << juice_variation.humanize if juice_variation.present?
-    sentence << tea_variation.humanize if tea_variation.present?
-    sentence << drink_type
+    sentence << juice_variation.humanize if juice_variation.present? and drink_type == 'juice'
+    sentence << tea_variation.humanize if tea_variation.present? and drink_type == 'tea'
+    sentence << soft_drink_variation.humanize if soft_drink_variation.present? and drink_type == "soft_drink"
+    sentence << drink_type unless drink_type == "soft_drink"
 
     drink_aspects = DRINK_TYPES[drink_type.to_sym]
 
@@ -62,6 +66,10 @@ class Drink < ActiveRecord::Base
 
   def as_json(options)
     super(:only => [:name, :drink_type], :methods => FLAT_DRINK_ASPECTS )
+  end
+
+  def generate_token
+    update_attribute(:token, Digest::MD5.hexdigest(self[:id].to_s))
   end
 
 end

@@ -1,4 +1,4 @@
 .drink_container.span6.add_drink
   %a{:href => new_company_drink_path(@company)}
-    != render :partial => "common/drink_infograph", :locals => {:drink => Drink.new}
+    != render :partial => "common/drink_infograph", :locals => {:drink => Drink.new(:milk_amount => :little)}
     %h2.name Add Drink

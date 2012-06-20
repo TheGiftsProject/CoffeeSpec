@@ -2,6 +2,7 @@
 @import "compass/css3/border-radius";
 @import "compass/css3/opacity";
 @import "compass/css3/images";
+@import "compass/css3/transition";
 
 $drink-height: 120px;
 $drink-width: 0.6 * $drink-height;
@@ -16,9 +17,10 @@ $drink-width: 0.6 * $drink-height;
   box-sizing: border-box;
   float: left;
   margin: 0;
+  position: relative;
   .drink{
     float: left;
-    margin-right: 50px
+    margin-right: 35px
   }
   h2{
     font-size: 4em;
@@ -29,16 +31,27 @@ $drink-width: 0.6 * $drink-height;
     max-height: 30px;
     color: #999;
   }
-  .edit{
-    opacity: 0;
-    transition: opacity 1s;
-    -webkit-transition: opacity 1s;
+  .btn-group{
+    @include opacity(0);
+    @include transition(opacity 0.5s);
+    position: absolute;
+    top: 10px;
+    right: 10px;
   }
-  &:hover{
-    .edit{
-      opacity: 1;
+
+  .hidden{
+    display: none;
+    & + .btn{
+      @include border-radius(4px);
     }
   }
+
+  &:hover{
+    .btn-group{
+      @include opacity(1);
+    }
+  }
+
 }
 
 .drink{
@@ -77,32 +90,35 @@ $drink-width: 0.6 * $drink-height;
   .milk{
     background: $regular-milk-color;
     width: 100%;
-    height: 10%;
     float:left;
-    border-bottom: $glass-padding solid $glass-color;
+
+    border-bottom: 0;
 
     &.none{
       height: 0;
-      border-bottom: 0;
     }
 
     &.touch {
       height: 5%;
-      border-bottom-width: $glass-padding / 2;
+      border-bottom: $glass-padding / 2 solid $glass-color;
     }
 
     &.little{
       height: 10%;
+      border-bottom: $glass-padding solid $glass-color;
     }
 
     &.third {
       height: 25%;
+      border-bottom: $glass-padding solid $glass-color;
     }
     &.half {
       height: 40%;
+      border-bottom: $glass-padding solid $glass-color;
     }
     &.max {
       height: 50%;
+      border-bottom: $glass-padding solid $glass-color;
     }
 
 
@@ -143,6 +159,30 @@ $drink-width: 0.6 * $drink-height;
     &.orange { background: $orange-juice-color; }
     &.lemon { background: $lemon-juice-color; }
     &.grapefruit { background: $grapefruit-juice-color; }
+  }
+
+  &.soft_drink .essence{
+    &.coke { background: $coke-color; }
+    &.sprite { background: $sprite-color; }
+    &.fanta{ background: $fanta-color; }
+    &.soda{ background: $soda-color; }
+    &:before{
+      content: "●\A      ●\A\A  ●";
+      white-space:pre;
+      color: white;
+      position: absolute;
+      font-size: 18px;
+      left: $glass-padding + 10px;
+      right: $glass-padding + 5px;
+      bottom: $glass-padding + 15px;
+    }
+  }
+
+  &.water, &.juice, &.soft_drink{
+    .essence{
+      border-top: 10px solid white;
+      margin-top: -10px;
+    }
   }
 
   .sugar{

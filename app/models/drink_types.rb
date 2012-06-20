@@ -8,7 +8,8 @@ module DrinkTypes
       :coffee => [:milk, :sugar, :strength],
       :tea => [:milk, :sugar, :tea_variation],
       :juice => [:juice_variation],
-      :water => []
+      :soft_drink => [:soft_drink_variation],
+      :water => [],
   }
 
   DRINK_ASPECTS = {
@@ -22,7 +23,8 @@ module DrinkTypes
           :type => [:white, :brown, :artificial]
       },
       :tea_variation => [:earl_grey],
-      :juice_variation => [:orange, :lemon, :grapefruit]
+      :juice_variation => [:orange, :lemon, :grapefruit],
+      :soft_drink_variation => [:coke, :sprite, :fanta, :soda],
   }
 
   FLAT_DRINK_ASPECTS = DRINK_ASPECTS.keys.map do |key|

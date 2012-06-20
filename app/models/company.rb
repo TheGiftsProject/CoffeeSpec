@@ -3,6 +3,7 @@ class Company < ActiveRecord::Base
 
   belongs_to :user
   has_many :drinks
+  belongs_to :currently_making, :class_name => :drink
   before_create :generate_tokens
 
   scope :find_by_token, lambda {|token| where("view_token = ? OR edit_token = ?", token, token) }

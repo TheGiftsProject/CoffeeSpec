@@ -11,24 +11,27 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120530133920) do
+ActiveRecord::Schema.define(:version => 20120613151717) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.string   "view_token"
     t.string   "edit_token"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "currently_making_id"
   end
 
   create_table "drinks", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
     t.integer  "company_id"
     t.string   "drink_type"
     t.text     "drink_aspect_values"
+    t.string   "token"
+    t.boolean  "wants",               :default => false
   end
 
   create_table "users", :force => true do |t|

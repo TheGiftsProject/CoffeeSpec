@@ -12,6 +12,9 @@ header{
 .btn-toolbar{
   display: none;
 }
+.btn-group{
+  display: none;
+}
 
 .add_drink{
   display: none;
@@ -20,11 +23,14 @@ header{
 .drinks{
   overflow: hidden;
   width: 980px;
+  .drink_container{
+    width: 490px;
+  }
   .drink{
     border: 10px solid $glass-color;
     padding: 0;
     .milk{
-      border-top: 10px solid $regular-milk-color; // by milk
+      border-top: 0px solid $regular-milk-color; // by milk
       height: 0;
 
       &.low_fat{
@@ -62,31 +68,40 @@ header{
 
     }
     .essence{
-      border-top: 100px solid blue;
+      border-bottom: 100px solid blue;
       height: 0;
       @include border-bottom-radius(0px);
     }
     &.coffee .essence{
-      border-color: $regular-coffee-color;
+      border-bottom-color: $regular-coffee-color;
 
       &.light{
-        border-color: $light-coffee-color;
+        border-bottom-color: $light-coffee-color;
       }
       &.strong{
-        border-color: $strong-coffee-color;
+        border-bottom-color: $strong-coffee-color;
       }
     }
     &.tea .essence{
-      border-color: $tea-color;
+      border-bottom-color: $tea-color;
     }
     &.water .essence{
-      border-color: $water-color;
+      border-bottom-color: $water-color;
     }
     &.juice .essence{
-      &.orange { border-color: $orange-juice-color; }
-      &.lemon { border-color: $lemon-juice-color; }
-      &.grapefruit { border-color: $grapefruit-juice-color; }
+      &.orange { border-bottom-color: $orange-juice-color; }
+      &.lemon { border-bottom-color: $lemon-juice-color; }
+      &.grapefruit { border-bottom-color: $grapefruit-juice-color; }
     }
+    &.soft_drink .essence{
+       &.coke { border-bottom-color: $coke-color; }
+       &.sprite { border-bottom-color: $sprite-color; }
+       &.fanta{ border-bottom-color: $fanta-color; }
+       &.soda{ border-bottom-color: $soda-color; }
+       &:before{
+         left:10px;
+       }
+    } 
     .sugar{
       bottom: 5px;
       left: 5px;
