@@ -41,6 +41,21 @@ class DrinksController < ApplicationController
     redirect_to company_dashboard, :notice => "Drink deleted"
   end
 
+  def want
+    drink = Drink.find_by_token(params[:drink_token])
+    drink.update_attribitue(:wants, true)
+    debugger
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
+  def making
+    drink = Drink.find_by_token(params[:drink_token])
+    company = drink.company
+    company.update_attribute(:currently_making, drink)
+    debugger
+    render :json => {:success => true}, :callback => params[:callback]
+  end
+
   private
 
   def load_drink
