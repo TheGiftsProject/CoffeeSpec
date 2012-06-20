@@ -18,5 +18,5 @@ function making() {
 
 function edit() {
     var token = localStorage['token'];
-    chrome.tabs.create({'url': 'http://coffeespec.herokuapp.com/drinks/' + token + '/edit'});
+    chrome.tabs.create({'url': "http://localhost:3000/drinks/" + token + '/edit'});
 }

@@ -2,9 +2,9 @@ class DrinksController < ApplicationController
 
   include CompanySupport
 
-  skip_before_filter :load_company, :only => [:making, :wants]
-  skip_before_filter :load_token, :only => [:making, :wants]
-  before_filter :must_edit, :except => [:making, :wants]
+  skip_before_filter :load_company, :only => [:making, :wants, :edit_with_token]
+  skip_before_filter :load_token, :only => [:making, :wants, :edit_with_token]
+  before_filter :must_edit, :except => [:making, :wants, :edit_with_token]
   before_filter :load_drink, :only => [:update, :edit, :destroy]
 
   def new
@@ -36,6 +36,16 @@ class DrinksController < ApplicationController
 
   def edit
     render :template => "drinks/new"
+  end
+
+  def edit_with_token
+    @drink = Drink.find_by_token(params[:drink_token])
+    if @drink.present?
+      @company = @drink.company
+      render :template => "drinks/new"
+    else
+      forbidden
+    end
   end
 
   def destroy
