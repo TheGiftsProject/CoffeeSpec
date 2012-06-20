@@ -3,6 +3,7 @@ CoffeeSpec.drinksController = Ember.ArrayController.create(
 
   load: (json)->
     return if json == undefined
+    json['mosheValueBinding'] = "Ember.Binding.and(false, false)"
     @pushObject(CoffeeSpec.Drink.create(json))
 
   loadAll: (json)->
