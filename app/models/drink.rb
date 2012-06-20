@@ -15,6 +15,14 @@ class Drink < ActiveRecord::Base
 
   after_create :generate_token
 
+  SUGAR_PRINT = {
+      's05' => '1/2',
+      's10' => '1',
+      's15' => '1 1/2',
+      's20' => '2',
+      's30' => '3',
+  }
+
   def description
     sentence = []
     sentence << strength if strength.present? and strength != "normal"
@@ -42,13 +50,9 @@ class Drink < ActiveRecord::Base
 
     if drink_aspects.include? :sugar
       if sugar_amount.present?
-        if sugar_amount > 0
+        if not sugar_amount.s00?
           sentence << "and"
-          if sugar_amount % 1 > 0
-            sentence << sugar_amount
-          else
-            sentence << sugar_amount.to_i
-          end
+          sentence << SUGAR_PRINT[sugar_amount]
           sentence << sugar_type if sugar_type.present? and sugar_type.brown?
           if sugar_type.artificial?
             sentence << "artificial sweetener"
