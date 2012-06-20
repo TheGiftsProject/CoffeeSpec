@@ -45,14 +45,14 @@ class DrinksController < ApplicationController
 
   def wants
     drink = Drink.find_by_token(params[:drink_token])
-    drink.update_attribitue(:wants, true)
+    drink.update_attribute(:wants, true)
     render :json => {:success => true}, :callback => params[:callback]
   end
 
   def making
     drink = Drink.find_by_token(params[:drink_token])
     company = drink.company
-    company.update_attribute(:currently_making, drink)
+    company.update_attribute(:currently_making_id, drink.id)
     render :json => {:success => true}, :callback => params[:callback]
   end
 
