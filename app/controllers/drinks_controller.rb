@@ -6,7 +6,7 @@ class DrinksController < ApplicationController
   before_filter :load_drink, :only => [:update, :edit, :destroy]
 
   def new
-    @drink = @company.drinks.build()
+    @drink = @company.drinks.build(:drink_type => :coffee)
   end
 
   def create
