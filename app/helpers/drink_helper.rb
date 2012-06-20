@@ -8,6 +8,6 @@ module DrinkHelper
   end
 
   def sugar_classes(drink)
-    "#{drink.sugar_type} s#{drink.sugar_amount.to_s.gsub(".","")}"
+    "#{drink.sugar_type} #{drink.sugar_amount}"
   end
 end

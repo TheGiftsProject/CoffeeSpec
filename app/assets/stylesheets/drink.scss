@@ -160,7 +160,9 @@ $drink-width: 0.6 * $drink-height;
   }
 
   &.tea .essence{
-    background: $tea-color;;
+    &.earl_grey { background: $earl-grey-tea-color; }
+    &.herbal { background: $herbal-tea-color; }
+    &.green { background: $green-tea-color;}
   }
   &.water .essence{
     background: $water-color;

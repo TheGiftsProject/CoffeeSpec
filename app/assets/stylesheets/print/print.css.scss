@@ -83,7 +83,9 @@ header{
       }
     }
     &.tea .essence{
-      border-bottom-color: $tea-color;
+      &.earl_grey { border-bottom-color: $earl-grey-tea-color; }
+      &.herbal { border-bottom-color: $herbal-tea-color; }
+      &.green { border-bottom-color: $green-tea-color;}
     }
     &.water .essence{
       border-bottom-color: $water-color;
