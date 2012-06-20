@@ -1,0 +1,31 @@
+@import "compass";
+
+.ext-popup{
+  padding-bottom: 15px;
+
+  h2{
+    padding-bottom: 2px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 8px;
+  }
+
+  .or-group{
+    position: relative;
+    .or{
+      position: absolute;
+      left: 42%;
+      top: -10px;
+      background: white;
+      padding: 0 20px;
+    }
+  }
+
+
+
+  .notify{
+    background: #B1DAF0;
+    padding: 5px;
+    margin-bottom: 10px;
+    @include border-radius(5px);
+  }
+}
