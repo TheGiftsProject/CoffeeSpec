@@ -10,7 +10,7 @@ CoffeeSpec::Application.routes.draw do
 
   match "/drinks/:drink_token/wants" => "drinks#wants"
   match "/drinks/:drink_token/making" => "drinks#making"
-  match "/drinks/:drink_token/edit" => "drinks#edit"
+  match "/drinks/:drink_token/edit" => "drinks#edit_with_token"
 
   match "/t/:token" => "application#token_route", :as => :token
 

@@ -9,14 +9,14 @@ function(request, sender, sendResponse) {
 });
 
 function wants() {
-    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "jsonp"})
+    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "GET"})
 }
 
 function making() {
-    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "jsonp"})
+    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "GET"})
 }
 
 function edit() {
     var token = localStorage['token'];
-    chrome.tabs.create({'url': 'http://coffeespec.herokuapp.com/drinks/' + token + '/edit'});
+    chrome.tabs.create({'url': "http://localhost:3000/drinks/" + token + '/edit'});
 }
