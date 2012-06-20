@@ -18,6 +18,16 @@ $drink-width: 0.6 * $drink-height;
   float: left;
   margin: 0;
   position: relative;
+  width: 50%;
+  @media screen and (max-width: 767px) {
+    font-size: 0.9em;
+  }
+  @media screen and (max-width: 700px) {
+    font-size: 0.6em;
+  }
+  @media screen and (max-width: 630px) {
+    font-size: 0.4em;
+  }
   .drink{
     float: left;
     margin-right: 35px
