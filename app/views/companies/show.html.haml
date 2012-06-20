@@ -4,8 +4,15 @@
   <script type='text/javascript'>
     $(function() {
       CoffeeSpec.drinksController.loadAll(<%= @drinks.to_json %>);
-      CoffeeSpec.drinkTypeController.loadAll(<%= Drink::DRINK_TYPES.keys.to_json %>);
-      CoffeeSpec.milkTypesController.loadAll(<%= Drink::DRINK_ASPECTS[:milk][:type].to_json %>);
+      CoffeeSpec.drinkTypeController.update(<%= Drink::DRINK_TYPES.keys.to_json %>);
+      CoffeeSpec.strengthController.update(<%= Drink::DRINK_ASPECTS[:strength].to_json %>);
+      CoffeeSpec.milkTypesController.update(<%= Drink::DRINK_ASPECTS[:milk][:type].to_json %>);
+      CoffeeSpec.milkAmountController.update(<%= Drink::DRINK_ASPECTS[:milk][:amount].to_json %>);
+      CoffeeSpec.sugarAmountController.update(<%= Drink::DRINK_ASPECTS[:sugar][:amount].to_json %>);
+      CoffeeSpec.sugarTypeController.update(<%= Drink::DRINK_ASPECTS[:sugar][:type].to_json %>);
+      CoffeeSpec.teaVariationController.update(<%= Drink::DRINK_ASPECTS[:tea_variation].to_json %>);
+      CoffeeSpec.juiceVariationController.update(<%= Drink::DRINK_ASPECTS[:juice_variation].to_json %>);
+      CoffeeSpec.softDrinkVariationController.update(<%= Drink::DRINK_ASPECTS[:soft_drink_variation].to_json %>);
      });
   </script>
 

@@ -60,6 +60,3 @@ class SmartDrinkForm
       aspects[drinkType] = $(".control-group[data-drink_types*='#{drinkType}']")
     aspects
 
-
-$(document).ready ->
-  new SmartDrinkForm($('.drink-form'))

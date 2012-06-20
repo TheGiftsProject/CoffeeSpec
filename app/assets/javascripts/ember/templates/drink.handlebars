@@ -8,38 +8,47 @@
   {{#if isEditing}}
 
     {{view Ember.Select
-           contentBinding="CoffeeSpec.drinkTypeController"
-           selectionBinding="drink.drink_type"
-           optionLabelPath="content"
-           optionValuePath="content"
-           prompt="Pick a drink"
+       contentBinding="CoffeeSpec.drinkTypeController"
+       selectionBinding="drink.drink_type"
+       optionLabelPath="content"
+       optionValuePath="content"
+       prompt="Pick a drink"
     }}
 
     {{view Ember.Select
-           contentBinding="CoffeeSpec.milkTypesController"
-           selectionBinding="drink.milk_type"
-           optionLabelPath="content"
-           optionValuePath="content"
-           prompt="Pick milk type"
-           isVisibleBinding="drink.isCoffee"
+        contentBinding="CoffeeSpec.strengthController"
+        selectionBinding="drink.strength"
+        optionLabelPath="content"
+        optionValuePath="content"
+        prompt="Pick strength"
+        isVisibleBinding="drink.isCoffeeOrTea"
     }}
 
     {{view Ember.Select
-           contentBinding="CoffeeSpec.milkTypesController"
-           selectionBinding="drink.milk_type"
-           optionLabelPath="content"
-           optionValuePath="content"
-           prompt="Pick milk type"
-           isVisibleBinding="drink.isCoffee"
+        contentBinding="CoffeeSpec.milkAmountController"
+        selectionBinding="drink.milk_amount"
+        optionLabelPath="content"
+        optionValuePath="content"
+        prompt="Pick milk amount"
+        isVisibleBinding="drink.isCoffeeOrTea"
     }}
 
     {{view Ember.Select
-           contentBinding="CoffeeSpec.milkTypesController"
-           selectionBinding="drink.milk_type"
-           optionLabelPath="content"
-           optionValuePath="content"
-           prompt="Pick milk type"
-           isVisibleBinding="drink.isCoffee"
+        contentBinding="CoffeeSpec.milkTypesController"
+        selectionBinding="drink.milk_type"
+        optionLabelPath="content"
+        optionValuePath="content"
+        prompt="Pick milk type"
+        isVisibleBinding="drink.isCoffeeOrTea"
+    }}
+
+    {{view Ember.Select
+        contentBinding="CoffeeSpec.milkTypesController"
+        selectionBinding="drink.milk_type"
+        optionLabelPath="content"
+        optionValuePath="content"
+        prompt="Pick milk type"
+        isVisibleBinding="drink.isCoffeeOrTea"
     }}
 
   {{else}}
