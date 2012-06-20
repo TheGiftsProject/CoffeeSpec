@@ -3,17 +3,18 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 $(document).ready( =>
-  $(".share").zclip(
-      path: "/ZeroClipboard.swf"
-      copy: -> $(@).attr("href")
-      afterCopy: ->
-        $(@).tooltip("show")
-        setTimeout(
-          => $(@).tooltip("hide")
-          800
-        )
-  ).tooltip(
-    title: "Copied to clipboard"
-    trigger: "manual"
-  )
+  if swfobject.hasFlashPlayerVersion("9")
+    $(".share").zclip(
+        path: "/ZeroClipboard.swf"
+        copy: -> $(@).attr("href")
+        afterCopy: ->
+          $(@).tooltip("show")
+          setTimeout(
+            => $(@).tooltip("hide")
+            800
+          )
+    ).tooltip(
+      title: "Copied to clipboard"
+      trigger: "manual"
+    )
 )
