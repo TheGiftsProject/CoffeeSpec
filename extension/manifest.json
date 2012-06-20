@@ -4,19 +4,26 @@
     "manifest_version": 2,
     "description": "A coffee spec helper!",
     "icons": {
-        "16": "icons/icon16.png",
-        "48": "icons/icon48.png",
-        "128": "icons/icon128.png" },
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png" },
     "browser_action": {
-        "default_icon": "icons/icon19.png",
-        "default_popup": "popup.html"
+      "default_icon": "icons/icon19.png",
+      "default_popup": "popup.html"
     },
     "content_scripts": [{
-        "matches": ["http://localhost:3000/*", "http://coffeespec.dev/*", "http://coffeespec.heroku.com/*"],
-        "js": ["jquery.js", "coffeespec.js"],
-        "run_at": "document_end"
+      "matches": ["http://localhost:3000/*", "http://coffeespec.dev/*", "http://coffeespec.heroku.com/*"],
+      "js": ["jquery.js", "coffeespec.js"],
+      "run_at": "document_end"
     }],
     "background": {
-        "scripts": ["jquery.js", "background.js"]
-    }
+      "scripts": ["jquery.js", "background.js"]
+    },
+    "permissions": [
+      "http://*/*",
+      "http://localhost:3000/*",
+      "https://*/*",
+      "tabs",
+      "background"
+    ]
 }

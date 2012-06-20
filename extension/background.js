@@ -9,11 +9,11 @@ function(request, sender, sendResponse) {
 });
 
 function wants() {
-    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "jsonp"})
+    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "GET"})
 }
 
 function making() {
-    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "jsonp"})
+    $.ajax("http://localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "GET"})
 }
 
 function edit() {
