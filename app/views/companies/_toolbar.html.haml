@@ -1,15 +1,20 @@
-.btn-toolbar.pull-right
-  .btn-group
-    %a.btn.btn-medium.notify{:href => "javascript:$('.want').fadeIn();"}
-      %i.icon-bullhorn
-      Notify Everyone
-    %a.btn.btn-medium.print{:href => "javascript:window.print()"}
-      %i.icon-print
-      Print spec
-    %a.btn.btn-medium.share{:href => token_url(:token => @company.view_token)}
-      %i.icon-share
-      Share URL
-    - if can_edit?
-      %a.btn.btn-medium.share.edit{:href => token_url(:token => @company.edit_token)}
-        %i.icon-edit
-        Share Edit URL
+- if @break_room
+  %a.btn.btn-large.notify{:href => "javascript:;"}
+    %i.icon-bullhorn
+    Notify Everyone
+- else
+  .btn-toolbar.pull-right
+    .btn-group
+      %a.btn.btn-medium.notify{:href => "javascript:;"}
+        %i.icon-bullhorn
+        Notify Everyone
+      %a.btn.btn-medium.print{:href => "javascript:window.print()"}
+        %i.icon-print
+        Print spec
+      %a.btn.btn-medium.share{:href => token_url(:token => @company.view_token)}
+        %i.icon-share
+        Share URL
+      - if can_edit?
+        %a.btn.btn-medium.share.edit{:href => token_url(:token => @company.edit_token)}
+          %i.icon-edit
+          Share Edit URL

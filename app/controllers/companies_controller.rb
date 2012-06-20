@@ -7,6 +7,7 @@ class CompaniesController < ApplicationController
 
   def show
     @drinks = @company.drinks
+    @break_room = params.include? "breakroom"
   end
 
   def update
