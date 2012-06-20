@@ -1,12 +1,13 @@
+var bg = chrome.extension.getBackgroundPage();
+
 $(".wants").click(function() {
-    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/wants", {type: "jsonp"})
+    bg.wants();
 });
 
 $(".making").click(function() {
-    $.ajax("localhost:3000/drinks/" + localStorage['token'] + "/making", {type: "jsonp"})
+    bg.making();
 });
 
 $(".edit").click(function() {
-    var token = localStorage['token'];
-    chrome.tabs.create({'url': 'http://coffeespec.herokuapp.com/drinks/' + token + '/edit'});
+    bg.edit();
 });

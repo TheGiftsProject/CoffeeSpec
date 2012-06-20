@@ -19,10 +19,10 @@ module DrinkTypes
           :type => [:regular, :low_fat, :soy]
       },
       :sugar => {
-          :amount => [0.0, 0.5, 1.0, 1.5, 2.0, 3.0],
+          :amount => [:s00, :s05, :s10, :s15, :s20, :s30],
           :type => [:white, :brown, :artificial]
       },
-      :tea_variation => [:earl_grey],
+      :tea_variation => [:earl_grey, :green, :herbal],
       :juice_variation => [:orange, :lemon, :grapefruit],
       :soft_drink_variation => [:coke, :sprite, :fanta, :soda],
   }
@@ -50,7 +50,6 @@ module DrinkTypes
         alias_method other_method_name, key
         define_method(key) do
           val = send(other_method_name)
-          return Float(val) if val.is_a_number?
           return ActiveSupport::StringInquirer.new(val) if val.is_a?(String)
           val
         end
