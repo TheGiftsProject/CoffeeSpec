@@ -11,7 +11,6 @@ gem 'thin'
 gem 'omniauth'
 gem 'omniauth-github', :git => 'git://github.com/intridea/omniauth-github.git'
 gem 'deep_merge'
-gem 'enumify'
 
 group :production do
   gem 'pg'
